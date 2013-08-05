@@ -1,0 +1,85 @@
+<%= form_for(@order) do |f| %>
+  <% if @order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+      <% @order.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :company %><br>
+    <%= f.text_field :company %>
+  </div>
+  <div class="field">
+    <%= f.label :creator_name %><br>
+    <%= f.text_field :creator_name %>
+  </div>
+  <div class="field">
+    <%= f.label :registered_address %><br>
+    <%= f.text_field :registered_address %>
+  </div>
+  <div class="field">
+    <%= f.label :actual_address %><br>
+    <%= f.text_field :actual_address %>
+  </div>
+  <div class="field">
+    <%= f.label :address_on_english %><br>
+    <%= f.text_field :address_on_english %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %><br>
+    <%= f.text_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :fax %><br>
+    <%= f.text_field :fax %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :inn %><br>
+    <%= f.text_field :inn %>
+  </div>
+  <div class="field">
+    <%= f.label :kpp %><br>
+    <%= f.text_field :kpp %>
+  </div>
+  <div class="field">
+    <%= f.label :ogrn %><br>
+    <%= f.text_field :ogrn %>
+  </div>
+  <div class="field">
+    <%= f.label :bank %><br>
+    <%= f.text_field :bank %>
+  </div>
+  <div class="field">
+    <%= f.label :current_account %><br>
+    <%= f.text_field :current_account %>
+  </div>
+  <div class="field">
+    <%= f.label :correspondent_account %><br>
+    <%= f.text_field :correspondent_account %>
+  </div>
+  <div class="field">
+    <%= f.label :bik %><br>
+    <%= f.text_field :bik %>
+  </div>
+  <div class="field">
+    <%= f.label :bank_person %><br>
+    <%= f.text_field :bank_person %>
+  </div>
+  <div class="field">
+    <%= f.label :auditors_names %><br>
+    <%= f.text_field :auditors_names %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

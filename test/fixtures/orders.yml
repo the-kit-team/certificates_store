@@ -1,0 +1,39 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  company: MyString
+  creator_name: MyString
+  registered_address: MyString
+  actual_address: MyString
+  address_on_english: MyString
+  phone: MyString
+  fax: MyString
+  email: MyString
+  inn: MyString
+  kpp: MyString
+  ogrn: MyString
+  bank: MyString
+  current_account: MyString
+  correspondent_account: MyString
+  bik: MyString
+  bank_person: MyString
+  auditors_names: MyString
+
+two:
+  company: MyString
+  creator_name: MyString
+  registered_address: MyString
+  actual_address: MyString
+  address_on_english: MyString
+  phone: MyString
+  fax: MyString
+  email: MyString
+  inn: MyString
+  kpp: MyString
+  ogrn: MyString
+  bank: MyString
+  current_account: MyString
+  correspondent_account: MyString
+  bik: MyString
+  bank_person: MyString
+  auditors_names: MyString

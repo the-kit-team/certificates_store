@@ -1,0 +1,59 @@
+<h1>Listing orders</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Company</th>
+      <th>Creator name</th>
+      <th>Registered address</th>
+      <th>Actual address</th>
+      <th>Address on english</th>
+      <th>Phone</th>
+      <th>Fax</th>
+      <th>Email</th>
+      <th>Inn</th>
+      <th>Kpp</th>
+      <th>Ogrn</th>
+      <th>Bank</th>
+      <th>Current account</th>
+      <th>Correspondent account</th>
+      <th>Bik</th>
+      <th>Bank person</th>
+      <th>Auditors names</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.company %></td>
+        <td><%= order.creator_name %></td>
+        <td><%= order.registered_address %></td>
+        <td><%= order.actual_address %></td>
+        <td><%= order.address_on_english %></td>
+        <td><%= order.phone %></td>
+        <td><%= order.fax %></td>
+        <td><%= order.email %></td>
+        <td><%= order.inn %></td>
+        <td><%= order.kpp %></td>
+        <td><%= order.ogrn %></td>
+        <td><%= order.bank %></td>
+        <td><%= order.current_account %></td>
+        <td><%= order.correspondent_account %></td>
+        <td><%= order.bik %></td>
+        <td><%= order.bank_person %></td>
+        <td><%= order.auditors_names %></td>
+        <td><%= link_to 'Show', order %></td>
+        <td><%= link_to 'Edit', edit_order_path(order) %></td>
+        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Order', new_order_path %>
