@@ -7,5 +7,31 @@ ru:
       title: "Сертификаты"
       home_page: "Домашняя страница"
       orders_page: "Заказы"
-  orders:
-    type_of_certificate: "Тип сертификата"
+      
+  activerecord:  
+    models:
+      order: "Заказ"
+      orders: "Заказы"
+    attributes:
+      order:
+        type_of_legal_entity: "Тип юридического лица"
+        company: "Наименование организации"
+        creator_name: "в лице"
+        registered_address: "Юридический адресс"
+        actual_address: "Фактический адресс"
+        address_on_english: "Адресс на английском языке"
+        phone: "Номер телефона"
+        fax: "Номер факса"
+        email: "Электронный адресс"
+        inn: "ИНН"
+        kpp: "КПП"
+        ogrn: "ОГРН"
+        bank: "Название банка"
+        current_account: "Расчётный счёт"
+        correspondent_account: "Корреспонденский счёт"
+        bik: "БИК"
+        bank_person: "Имя вкладчика"
+        type_of_certificate: "Тип сертификата"
+        auditors_names: "Имя(на) аудитора(ов)(ФИО)"
+        list_of_works_categories: "Разделы перечня работ"
+      
