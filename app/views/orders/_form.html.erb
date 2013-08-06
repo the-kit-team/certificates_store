@@ -12,83 +12,83 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :type_of_certificate %><br>
+    <%= f.label :type_of_certificate %>
     <%= f.collection_select :type_of_certificate_id, TypeOfCertificate.all, :id, :title %>
   </div>
   <div class="field">
-    <%= f.label :type_of_legal_entity %><br>
+    <%= f.label :type_of_legal_entity %>
     <%= f.collection_select :type_of_legal_entity_id, TypeOfLegalEntity.all, :id, :title %>
   </div>
   <div class="field">
-    <%= f.label :company %><br>
+    <%= f.label :company %>
     <%= f.text_field :company %>
   </div>
   <div class="field">
-    <%= f.label :creator_name %><br>
+    <%= f.label :creator_name %>
     <%= f.text_field :creator_name %>
   </div>
   <div class="field">
-    <%= f.label :registered_address %><br>
+    <%= f.label :registered_address %>
     <%= f.text_field :registered_address %>
   </div>
   <div class="field">
-    <%= f.label :actual_address %><br>
+    <%= f.label :actual_address %>
     <%= f.text_field :actual_address %>
   </div>
   <div class="field">
-    <%= f.label :address_on_english %><br>
+    <%= f.label :address_on_english %>
     <%= f.text_field :address_on_english %>
   </div>
   <div class="field">
-    <%= f.label :phone %><br>
+    <%= f.label :phone %>
     <%= f.text_field :phone %>
   </div>
   <div class="field">
-    <%= f.label :fax %><br>
+    <%= f.label :fax %>
     <%= f.text_field :fax %>
   </div>
   <div class="field">
-    <%= f.label :email %><br>
+    <%= f.label :email %>
     <%= f.text_field :email %>
   </div>
   <div class="field">
-    <%= f.label :inn %><br>
+    <%= f.label :inn %>
     <%= f.text_field :inn %>
   </div>
   <div class="field">
-    <%= f.label :kpp %><br>
+    <%= f.label :kpp %>
     <%= f.text_field :kpp %>
   </div>
   <div class="field">
-    <%= f.label :ogrn %><br>
+    <%= f.label :ogrn %>
     <%= f.text_field :ogrn %>
   </div>
   <div class="field">
-    <%= f.label :bank %><br>
+    <%= f.label :bank %>
     <%= f.text_field :bank %>
   </div>
   <div class="field">
-    <%= f.label :current_account %><br>
+    <%= f.label :current_account %>
     <%= f.text_field :current_account %>
   </div>
   <div class="field">
-    <%= f.label :correspondent_account %><br>
+    <%= f.label :correspondent_account %>
     <%= f.text_field :correspondent_account %>
   </div>
   <div class="field">
-    <%= f.label :bik %><br>
+    <%= f.label :bik %>
     <%= f.text_field :bik %>
   </div>
   <div class="field">
-    <%= f.label :bank_person %><br>
+    <%= f.label :bank_person %>
     <%= f.text_field :bank_person %>
   </div>
   <div class="field">
-    <%= f.label :auditors_names %><br>
+    <%= f.label :auditors_names %>
     <%= f.text_field :auditors_names %>
   </div>
   <div class="field">
-    <%= f.label :list_of_works_category %><br>
+    <%= f.label :list_of_works_category %><br/>
     <%= f.collection_select :list_of_works_category_ids, ListOfWorksCategory.all, :id, :title, {include_blank: false}, multiple: true %>
   </div>
   <div class="actions">
