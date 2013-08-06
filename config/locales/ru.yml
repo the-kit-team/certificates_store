@@ -83,11 +83,4 @@ ru:
       create: Создать %{model}
       submit: Сохранить %{model}
       update: Сохранить %{model}
-  # remove these aliases after 'activemodel' and 'activerecord' namespaces are removed from Rails repository
-  activemodel:
-    errors:
-      <<: *errors
-  activerecord:
-    errors:
-      <<: *errors
       
