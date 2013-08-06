@@ -25,6 +25,9 @@ ActiveRecord::Schema.define(version: 20130806003545) do
   end
 
   create_table "orders", force: true do |t|
+    t.integer  "type_of_certificate_id"
+    t.integer  "type_of_legal_entity_id"
+    t.integer  "status_id"
     t.string   "company"
     t.string   "creator_name"
     t.string   "registered_address"
@@ -47,21 +50,18 @@ ActiveRecord::Schema.define(version: 20130806003545) do
   end
 
   create_table "statuses", force: true do |t|
-    t.integer  "order_id"
     t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "type_of_certificates", force: true do |t|
-    t.integer  "order_id"
     t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "type_of_legal_entities", force: true do |t|
-    t.integer  "order_id"
     t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"

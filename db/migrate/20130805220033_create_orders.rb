@@ -1,6 +1,9 @@
 class CreateOrders < ActiveRecord::Migration
   def change
     create_table :orders do |t|
+      t.belongs_to :type_of_certificate
+      t.belongs_to :type_of_legal_entity
+      t.belongs_to :status
       t.string :company
       t.string :creator_name
       t.string :registered_address
