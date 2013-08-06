@@ -12,32 +12,41 @@
     font-style: bold;
     text-align: left;
   }
-}
 
-.actions {
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
+  .actions {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    input[type='submit'] { width: 100%; }
   
-  input[type='submit'] {
+    tr td {
+      padding: 0px 20px;
+      margin: 0px;
+      a { text-decoration: none; }
+    }
+  }
+
+  .field {
     width: 100%;
-  }
-  
-  tr td {
-    padding: 0px 20px;
     margin: 0px;
-    a { text-decoration: none; }
+    label {
+      display:inline-block;
+      width: 200px;
+    }
+    input { width: 40%; }
+    input#order_auditors_names { width: 60%; }
+    select#order_list_of_works_category_ids { width: 100%; height: 200px; }
   }
 }
 
-.field {
-  width: 100%;
-  margin: 0px;
-  label {
-    display:inline-block;
-    width: 200px;
+.orders_list {
+  tr th {
+    padding: 0px;
+    border-bottom: 1px solid black;
+    width: 240px;
+    text-align: left;
   }
-  input { width: 40%; }
-  input#order_auditors_names { width: 60%; }
-    
-  select#order_list_of_works_category_ids { width: 100%; height: 200px; }
+  tr td {
+    border-bottom: 1px solid black;
+    text-align: left;
+  }
 }
