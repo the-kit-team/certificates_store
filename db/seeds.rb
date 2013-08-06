@@ -6,6 +6,16 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+Status.delete_all
+Status.create([ 
+  {title: "Новый"},
+  {title: "Принятый"},
+  {title: "Выполненный"},
+  {title: "Отменённый"}
+])
+puts "Статусы:"
+puts Status.all.map(&:title)
+
 TypeOfLegalEntity.delete_all
 TypeOfLegalEntity.create([ 
   {title: "ООО"},
