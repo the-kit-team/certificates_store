@@ -32,7 +32,7 @@ ru:
         bank_person: "Имя вкладчика"
         type_of_certificate: "Тип сертификата"
         auditors_names: "Имя(на) аудитора(ов)(ФИО)"
-        list_of_works_categories: "Разделы перечня работ"
+        list_of_works_category: "Разделы перечня работ"
   errors: &errors
     format: ! '%{attribute} %{message}'
     messages:
