@@ -3,6 +3,8 @@
 <table>
   <thead>
     <tr>
+      <th><%= t :type_of_certificate %></th>
+      <th><%= t :type_of_legal_entity %></th>
       <th>Company</th>
       <th>Creator name</th>
       <th>Registered address</th>
@@ -20,6 +22,7 @@
       <th>Bik</th>
       <th>Bank person</th>
       <th>Auditors names</th>
+      <th><%= t :list_of_works_categories %></th>
       <th></th>
       <th></th>
       <th></th>
@@ -29,6 +32,8 @@
   <tbody>
     <% @orders.each do |order| %>
       <tr>
+        <td><%= TypeOfCertificate.find(order.type_of_certificate_id).title %></td>
+        <td><%= TypeOfLegalEntity.find(order.type_of_legal_entity_id).title %></td>
         <td><%= order.company %></td>
         <td><%= order.creator_name %></td>
         <td><%= order.registered_address %></td>
@@ -46,6 +51,7 @@
         <td><%= order.bik %></td>
         <td><%= order.bank_person %></td>
         <td><%= order.auditors_names %></td>
+        <td><%= order.list_of_works_categories.map(&:title).join("/") %></td>
         <td><%= link_to 'Show', order %></td>
         <td><%= link_to 'Edit', edit_order_path(order) %></td>
         <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>

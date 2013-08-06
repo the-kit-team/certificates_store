@@ -1,6 +1,14 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong><%= t :type_of_certificate %></strong>
+  <%= TypeOfCertificate.find(@order.type_of_certificate_id).title %>
+</p>
+<p>
+  <strong><%= t :type_of_legal_entity %></strong>
+  <%= TypeOfLegalEntity.find(@order.type_of_legal_entity_id).title %>
+</p>
+<p>
   <strong>Company:</strong>
   <%= @order.company %>
 </p>
@@ -84,6 +92,9 @@
   <strong>Auditors names:</strong>
   <%= @order.auditors_names %>
 </p>
-
+<p>
+  <strong><%= t :list_of_works_categories %></strong>
+  <%= @order.list_of_works_categories.map(&:title).join("/") %>
+</p>
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>
