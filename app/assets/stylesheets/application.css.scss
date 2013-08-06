@@ -1,0 +1,73 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+
+body {
+  margin: 0px;
+  
+  #banner {
+    background: #00CC99;
+    padding: 25px 0px 0px 25px;
+    margin: 0px;
+    font: small-caps 42px/42px "Times New Roman", serif;
+    color: white;
+    text-align: left-bottom;
+    img { float: left; }
+    #language {
+      float: right;
+      margin-right: 10px;
+      font: 16px/16px "Arial";
+      color: black;
+      text-align: top-right;
+      a { text-decoration: none; }
+    }
+  }
+
+  #columns {
+    #side {
+      padding: 0;
+      width: 100%;
+      background: #000;
+      ul {
+        padding: 1px 25px;
+        margin: 0;
+        li {
+          align: center;
+          display: inline;
+          list-style: none;
+          font: small-caps 22px/22px "Times New Roman", serif;
+          a {
+            padding: 0px 25px;
+            color: #FFF;
+            text-decoration: none;
+            &:hover { background: #00CC99; }
+            &#current_page { color: #000; background: #FFE; }
+          }
+        }
+      }
+    }
+  
+    #main {
+      margin: 0px 10%;
+      padding: 1em;
+      background: #FFFFEE;
+    }
+  }
+  #footer {
+    font: small-caps 16px/16px "Times New Roman", serif;
+    color: #AAA;
+    text-align: center;
+    width: 100%;
+    height: 30px
+  }
+}
