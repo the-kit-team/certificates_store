@@ -12,6 +12,14 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :type_of_certificate %><br>
+    <%= f.collection_select :type_of_certificate, TypeOfCertificate.all, :id, :title %>
+  </div>
+  <div class="field">
+    <%= f.label :type_of_legal_entity %><br>
+    <%= f.collection_select :type_of_legal_entity, TypeOfLegalEntity.all, :id, :title %>
+  </div>
+  <div class="field">
     <%= f.label :company %><br>
     <%= f.text_field :company %>
   </div>
@@ -78,6 +86,10 @@
   <div class="field">
     <%= f.label :auditors_names %><br>
     <%= f.text_field :auditors_names %>
+  </div>
+  <div class="field">
+    <%= f.label :list_of_works_category %><br>
+    <%= f.collection_select :list_of_works_category_ids, ListOfWorksCategory.all, :id, :title, {include_blank: false}, multiple: true %>
   </div>
   <div class="actions">
     <%= f.submit %>
