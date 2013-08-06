@@ -13,11 +13,11 @@
 
   <div class="field">
     <%= f.label :type_of_certificate %><br>
-    <%= f.collection_select :type_of_certificate, TypeOfCertificate.all, :id, :title %>
+    <%= f.collection_select :type_of_certificate_id, TypeOfCertificate.all, :id, :title %>
   </div>
   <div class="field">
     <%= f.label :type_of_legal_entity %><br>
-    <%= f.collection_select :type_of_legal_entity, TypeOfLegalEntity.all, :id, :title %>
+    <%= f.collection_select :type_of_legal_entity_id, TypeOfLegalEntity.all, :id, :title %>
   </div>
   <div class="field">
     <%= f.label :company %><br>
