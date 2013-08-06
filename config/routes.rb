@@ -1,12 +1,16 @@
 CertificatesStore::Application.routes.draw do
   get "home/index"
-  resources :orders
+  
+  scope '(:locale)' do
+    resources :orders
+    root 'home#index', as: 'home'
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'home#index', as: 'home'
+  # root 'home#index', as: 'home'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
