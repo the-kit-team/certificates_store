@@ -1,6 +1,14 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
+  def generate_pdf(order)
+    Prawn::Document.new do
+      text order.company, align: :center
+      text "Fax: #{order.fax}"
+      text "Перечень работ: #{order.list_of_works_categories.map(&:title).join("/")}"
+    end.render
+  end
+
   # GET /orders
   # GET /orders.json
   def index
@@ -10,6 +18,13 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.json
   def show
+    @order = Order.find(params[:id])
+    
+    respond_to do |format|
+      format.html
+      format.json { render json: @order }
+      format.pdf { send_data generate_pdf(@order), filename: "certificate.pdf", type: "application/pdf", disposition: "inline" }
+    end
   end
 
   # GET /orders/new
