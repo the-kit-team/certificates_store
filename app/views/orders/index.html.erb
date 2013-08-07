@@ -1,60 +1,94 @@
-<h1>Listing orders</h1>
+<h1><%= t('activerecord.models.orders') %></h1>
 
-<table>
-  <thead>
-    <tr>
-      <th><%= t :type_of_certificate %></th>
-      <th><%= t :type_of_legal_entity %></th>
-      <th>Company</th>
-      <th>Creator name</th>
-      <th>Registered address</th>
-      <th>Actual address</th>
-      <th>Address on english</th>
-      <th>Phone</th>
-      <th>Fax</th>
-      <th>Email</th>
-      <th>Inn</th>
-      <th>Kpp</th>
-      <th>Ogrn</th>
-      <th>Bank</th>
-      <th>Current account</th>
-      <th>Correspondent account</th>
-      <th>Bik</th>
-      <th>Bank person</th>
-      <th>Auditors names</th>
-      <th><%= t :list_of_works_categories %></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
+<table class="orders_list">
   <tbody>
     <% @orders.each do |order| %>
       <tr>
+        <th><%= t('activerecord.attributes.order.type_of_certificate') %></th>
         <td><%= TypeOfCertificate.find(order.type_of_certificate_id).title %></td>
+      </tr>
+      <tr>
+        <th><%= t('activerecord.attributes.order.type_of_legal_entity') %></th>
         <td><%= TypeOfLegalEntity.find(order.type_of_legal_entity_id).title %></td>
+      </tr>
+      <tr>
+        <th><%= t('activerecord.attributes.order.company') %></th>
         <td><%= order.company %></td>
+      </tr>
+      <tr>
+        <th><%= t('activerecord.attributes.order.creator_name') %></th>
         <td><%= order.creator_name %></td>
+      </tr>
+      <tr>
+        <th><%= t('activerecord.attributes.order.registered_address') %></th>
         <td><%= order.registered_address %></td>
+      </tr>
+      <tr>
+        <th><%= t('activerecord.attributes.order.actual_address') %></th>
         <td><%= order.actual_address %></td>
+      </tr>
+      <tr>
+        <th><%= t('activerecord.attributes.order.address_on_english') %></th>
         <td><%= order.address_on_english %></td>
+      </tr>
+      <tr>
+        <th><%= t('activerecord.attributes.order.phone') %></th>
         <td><%= order.phone %></td>
+      </tr>
+      <tr>
+        <th><%= t('activerecord.attributes.order.fax') %></th>
         <td><%= order.fax %></td>
+      </tr>
+      <tr>
+        <th><%= t('activerecord.attributes.order.email') %></th>
         <td><%= order.email %></td>
+      </tr>
+      <tr>
+        <th><%= t('activerecord.attributes.order.inn') %></th>
         <td><%= order.inn %></td>
+      </tr>
+      <tr>
+        <th><%= t('activerecord.attributes.order.kpp') %></th>
         <td><%= order.kpp %></td>
+      </tr>
+      <tr>
+        <th><%= t('activerecord.attributes.order.ogrn') %></th>
         <td><%= order.ogrn %></td>
+      </tr>
+      <tr>
+        <th><%= t('activerecord.attributes.order.bank') %></th>
         <td><%= order.bank %></td>
+      </tr>
+      <tr>
+        <th><%= t('activerecord.attributes.order.current_account') %></th>
         <td><%= order.current_account %></td>
+      </tr>
+      <tr>
+        <th><%= t('activerecord.attributes.order.correspondent_account') %></th>
         <td><%= order.correspondent_account %></td>
+      </tr>
+      <tr>
+        <th><%= t('activerecord.attributes.order.bik') %></th>
         <td><%= order.bik %></td>
+      </tr>
+      <tr>
+        <th><%= t('activerecord.attributes.order.bank_person') %></th>
         <td><%= order.bank_person %></td>
+      </tr>
+      <tr>
+        <th><%= t('activerecord.attributes.order.auditors_names') %></th>
         <td><%= order.auditors_names %></td>
+      </tr>
+      <tr>
+        <th><%= t('activerecord.attributes.order.list_of_works_category') %></th>
         <td><%= order.list_of_works_categories.map(&:title).join("/") %></td>
-        <td><%= link_to 'Show', order %></td>
-        <td><%= link_to 'Edit', edit_order_path(order) %></td>
-        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+      <tr>
+        <td>
+          <%= link_to 'Show', order %> |
+          <%= link_to 'Edit', edit_order_path(order) %> |
+          <%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
       </tr>
     <% end %>
   </tbody>
