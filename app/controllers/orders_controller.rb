@@ -1,5 +1,6 @@
-# encoding: utf-8
 class OrdersController < ApplicationController
+  include OrdersHelper
+
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   # GET /orders
@@ -16,7 +17,7 @@ class OrdersController < ApplicationController
     respond_to do |format|
       format.html
       format.json { render json: @order }
-      format.pdf { send_data CertificatePDF.new.generate_iso9000(@order), filename: "certificate.pdf", type: "application/pdf", :disposition => 'inline' }
+      format.pdf { send_data generate_pdf(@order), filename: "certificate.pdf", type: "application/pdf", :disposition => 'inline' }
     end
   end
 
