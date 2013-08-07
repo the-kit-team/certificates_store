@@ -38,7 +38,7 @@ form {
   }
 }
 
-.orders_list {
+.list {
   tr th {
     padding: 0px;
     border-bottom: 1px solid black;
@@ -49,4 +49,8 @@ form {
     border-bottom: 1px solid black;
     text-align: left;
   }
+}
+
+.show {
+  p strong { width: 240px; }
 }
