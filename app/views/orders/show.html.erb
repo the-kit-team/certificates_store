@@ -1,99 +1,99 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong><%= t('activerecord.attributes.order.type_of_certificate') %></strong>
+  <strong><%= t :type_of_certificate, scope: 'activerecord.attributes.order'</strong>
   <%= TypeOfCertificate.find(@order.type_of_certificate_id).title %>
 </p>
 <p>
-  <strong><%= t('activerecord.attributes.order.type_of_legal_entity') %></strong>
+  <strong><%= t :type_of_legal_entity, scope: 'activerecord.attributes.order'</strong>
   <%= TypeOfLegalEntity.find(@order.type_of_legal_entity_id).title %>
 </p>
 <p>
-  <strong><%= t('activerecord.attributes.order.company') %></strong>
+  <strong><%= t :company, scope: 'activerecord.attributes.order'</strong>
   <%= @order.company %>
 </p>
 
 <p>
-  <strong><%= t('activerecord.attributes.order.creator_name') %></strong>
+  <strong><%= t :creator_name, scope: 'activerecord.attributes.order'</strong>
   <%= @order.creator_name %>
 </p>
 
 <p>
-  <strong><%= t('activerecord.attributes.order.registered_address') %></strong>
+  <strong><%= t :registered_address, scope: 'activerecord.attributes.order'</strong>
   <%= @order.registered_address %>
 </p>
 
 <p>
-  <strong><%= t('activerecord.attributes.order.actual_address') %></strong>
+  <strong><%= t :actual_address, scope: 'activerecord.attributes.order'</strong>
   <%= @order.actual_address %>
 </p>
 
 <p>
-  <strong><%= t('activerecord.attributes.order.address_on_english') %></strong>
+  <strong><%= t :address_on_english, scope: 'activerecord.attributes.order'</strong>
   <%= @order.address_on_english %>
 </p>
 
 <p>
-  <strong><%= t('activerecord.attributes.order.phone') %></strong>
+  <strong><%= t :phone, scope: 'activerecord.attributes.order'</strong>
   <%= @order.phone %>
 </p>
 
 <p>
-  <strong><%= t('activerecord.attributes.order.fax') %></strong>
+  <strong><%= t :fax, scope: 'activerecord.attributes.order'</strong>
   <%= @order.fax %>
 </p>
 
 <p>
-  <strong><%= t('activerecord.attributes.order.email') %></strong>
+  <strong><%= t :email, scope: 'activerecord.attributes.order'</strong>
   <%= @order.email %>
 </p>
 
 <p>
-  <strong><%= t('activerecord.attributes.order.inn') %></strong>
+  <strong><%= t :inn, scope: 'activerecord.attributes.order'</strong>
   <%= @order.inn %>
 </p>
 
 <p>
-  <strong><%= t('activerecord.attributes.order.kpp') %></strong>
+  <strong><%= t :kpp, scope: 'activerecord.attributes.order'</strong>
   <%= @order.kpp %>
 </p>
 
 <p>
-  <strong><%= t('activerecord.attributes.order.ogrn') %></strong>
+  <strong><%= t :ogrn, scope: 'activerecord.attributes.order'</strong>
   <%= @order.ogrn %>
 </p>
 
 <p>
-  <strong><%= t('activerecord.attributes.order.bank') %></strong>
+  <strong><%= t :bank, scope: 'activerecord.attributes.order'</strong>
   <%= @order.bank %>
 </p>
 
 <p>
-  <strong><%= t('activerecord.attributes.order.current_account') %></strong>
+  <strong><%= t :current_account, scope: 'activerecord.attributes.order'</strong>
   <%= @order.current_account %>
 </p>
 
 <p>
-  <strong><%= t('activerecord.attributes.order.correspondent_account') %></strong>
+  <strong><%= t :correspondent_account, scope: 'activerecord.attributes.order'</strong>
   <%= @order.correspondent_account %>
 </p>
 
 <p>
-  <strong><%= t('activerecord.attributes.order.bik') %></strong>
+  <strong><%= t :bik, scope: 'activerecord.attributes.order'</strong>
   <%= @order.bik %>
 </p>
 
 <p>
-  <strong><%= t('activerecord.attributes.order.bank_person') %></strong>
+  <strong><%= t :bank_person, scope: 'activerecord.attributes.order'</strong>
   <%= @order.bank_person %>
 </p>
 
 <p>
-  <strong><%= t('activerecord.attributes.order.auditors_names') %></strong>
+  <strong><%= t :auditors_names, scope: 'activerecord.attributes.order'</strong>
   <%= @order.auditors_names %>
 </p>
 <p>
-  <strong><%= t('activerecord.attributes.order.list_of_works_categories') %></strong>
+  <strong><%= t :list_of_works_categories, scope: 'activerecord.attributes.order'</strong>
   <%= @order.list_of_works_categories.map(&:title).join("/") %>
 </p>
 <%= link_to 'Edit', edit_order_path(@order) %> |

@@ -1,86 +1,86 @@
-<h1><%= t('activerecord.models.orders') %></h1>
+<h1><%= t :orders, scope: 'activerecord.models' %></h1>
 
 <table class="orders_list">
   <tbody>
     <% @orders.each do |order| %>
       <tr>
-        <th><%= t('activerecord.attributes.order.type_of_certificate') %></th>
+        <th><%= t :type_of_certificate, scope: 'activerecord.attributes.order' %></th>
         <td><%= TypeOfCertificate.find(order.type_of_certificate_id).title %></td>
       </tr>
       <tr>
-        <th><%= t('activerecord.attributes.order.type_of_legal_entity') %></th>
+        <th><%= t :type_of_legal_entity, scope: 'activerecord.attributes.order' %></th>
         <td><%= TypeOfLegalEntity.find(order.type_of_legal_entity_id).title %></td>
       </tr>
       <tr>
-        <th><%= t('activerecord.attributes.order.company') %></th>
+        <th><%= t :company, scope: 'activerecord.attributes.order' %></th>
         <td><%= order.company %></td>
       </tr>
       <tr>
-        <th><%= t('activerecord.attributes.order.creator_name') %></th>
+        <th><%= t :creator_name, scope: 'activerecord.attributes.order' %></th>
         <td><%= order.creator_name %></td>
       </tr>
       <tr>
-        <th><%= t('activerecord.attributes.order.registered_address') %></th>
+        <th><%= t :registered_address, scope: 'activerecord.attributes.order' %></th>
         <td><%= order.registered_address %></td>
       </tr>
       <tr>
-        <th><%= t('activerecord.attributes.order.actual_address') %></th>
+        <th><%= t :actual_address, scope: 'activerecord.attributes.order' %></th>
         <td><%= order.actual_address %></td>
       </tr>
       <tr>
-        <th><%= t('activerecord.attributes.order.address_on_english') %></th>
+        <th><%= t :address_on_english, scope: 'activerecord.attributes.order' %></th>
         <td><%= order.address_on_english %></td>
       </tr>
       <tr>
-        <th><%= t('activerecord.attributes.order.phone') %></th>
+        <th><%= t :phone, scope: 'activerecord.attributes.order' %></th>
         <td><%= order.phone %></td>
       </tr>
       <tr>
-        <th><%= t('activerecord.attributes.order.fax') %></th>
+        <th><%= t :fax, scope: 'activerecord.attributes.order' %></th>
         <td><%= order.fax %></td>
       </tr>
       <tr>
-        <th><%= t('activerecord.attributes.order.email') %></th>
+        <th><%= t :email, scope: 'activerecord.attributes.order' %></th>
         <td><%= order.email %></td>
       </tr>
       <tr>
-        <th><%= t('activerecord.attributes.order.inn') %></th>
+        <th><%= t :inn, scope: 'activerecord.attributes.order' %></th>
         <td><%= order.inn %></td>
       </tr>
       <tr>
-        <th><%= t('activerecord.attributes.order.kpp') %></th>
+        <th><%= t :kpp, scope: 'activerecord.attributes.order' %></th>
         <td><%= order.kpp %></td>
       </tr>
       <tr>
-        <th><%= t('activerecord.attributes.order.ogrn') %></th>
+        <th><%= t :ogrn, scope: 'activerecord.attributes.order' %></th>
         <td><%= order.ogrn %></td>
       </tr>
       <tr>
-        <th><%= t('activerecord.attributes.order.bank') %></th>
+        <th><%= t :bank, scope: 'activerecord.attributes.order' %></th>
         <td><%= order.bank %></td>
       </tr>
       <tr>
-        <th><%= t('activerecord.attributes.order.current_account') %></th>
-        <td><%= order.current_account %></td>
+        <th><%= t :current_account, scope: 'activerecord.attributes.order' %></th>
+        <td><%= order.current_account :%></td>
       </tr>
       <tr>
-        <th><%= t('activerecord.attributes.order.correspondent_account') %></th>
-        <td><%= order.correspondent_account %></td>
+        <th><%= t :correspondent_account, scope: 'activerecord.attributes.order' %></th>
+        <td><%= order.correspondent_account :%></td>
       </tr>
       <tr>
-        <th><%= t('activerecord.attributes.order.bik') %></th>
+        <th><%= t :bik, scope: 'activerecord.attributes.order' %></th>
         <td><%= order.bik %></td>
       </tr>
       <tr>
-        <th><%= t('activerecord.attributes.order.bank_person') %></th>
+        <th><%= t :bank_person, scope: 'activerecord.attributes.order' %></th>
         <td><%= order.bank_person %></td>
       </tr>
       <tr>
-        <th><%= t('activerecord.attributes.order.auditors_names') %></th>
+        <th><%= t :auditors_names, scope: 'activerecord.attributes.order' %></th>
         <td><%= order.auditors_names %></td>
       </tr>
       <tr>
-        <th><%= t('activerecord.attributes.order.list_of_works_category') %></th>
+        <th><%= t :list_of_works_category, scope: 'activerecord.attributes.order' %></th>
         <td><%= order.list_of_works_categories.map(&:title).join("/") %></td>
       </tr>
       <tr>
