@@ -1,13 +1,6 @@
+# encoding: utf-8
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
-
-  def generate_pdf(order)
-    Prawn::Document.new do
-      text order.company, align: :center
-      text "Fax: #{order.fax}"
-      text "Перечень работ: #{order.list_of_works_categories.map(&:title).join("/")}"
-    end.render
-  end
 
   # GET /orders
   # GET /orders.json
@@ -23,7 +16,7 @@ class OrdersController < ApplicationController
     respond_to do |format|
       format.html
       format.json { render json: @order }
-      format.pdf { send_data generate_pdf(@order), filename: "certificate.pdf", type: "application/pdf", disposition: "inline" }
+      format.pdf { send_data CertificatePDF.new.generate_iso9000(@order), filename: "certificate.pdf", type: "application/pdf", :disposition => 'inline' }
     end
   end
 
