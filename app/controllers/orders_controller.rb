@@ -25,6 +25,7 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
     @order = Order.new(order_params)
+    @order.status_id = Status.find_by_title("Новый").id
 
     respond_to do |format|
       if @order.save
