@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130806003545) do
+ActiveRecord::Schema.define(version: 20130808020451) do
 
   create_table "list_of_works_categories", force: true do |t|
     t.string   "title"
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 20130806003545) do
     t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "full_title"
   end
 
 end
