@@ -88,7 +88,7 @@
         <td>
           <%= link_to t('show'), order %> |
           <%= link_to t('edit'), edit_order_path(order) %> |
-          <%= link_to t('destroy'), order, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to t('destroy'), order, method: :delete, data: { confirm: t('are_you_sure_to_destroy')+'?' } %>
         </td>
       </tr>
     <% end %>
@@ -97,4 +97,4 @@
 
 <br>
 
-<%= link_to 'New Order', new_order_path %>
+<%= link_to t('new_order'), new_order_path %>
