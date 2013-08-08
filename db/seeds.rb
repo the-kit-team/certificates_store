@@ -18,14 +18,14 @@ puts Status.all.map(&:title)
 
 TypeOfLegalEntity.delete_all
 TypeOfLegalEntity.create([ 
-  {title: "ООО"},
-  {title: "ИП"},
-  {title: "ЗАО"},
-  {title: "ОАО"},
-  {title: "НП"}
+  {title: "ООО", full_title: "Общество с ограниченной ответственностью"},
+  {title: "ИП", full_title: "Индивидуальный предприниматель"},
+  {title: "ЗАО", full_title: "Закрытое акционерное общество"},
+  {title: "ОАО", full_title: "Открытое акционерное общество"},
+  {title: "НП", full_title: "Некоммерческое партнерство"}
 ])
 puts "Типы юридического лица:"
-puts TypeOfLegalEntity.all.map(&:title)
+puts TypeOfLegalEntity.all.map { |e| "#{e.title} = #{e.full_title}" }
 
 TypeOfCertificate.delete_all
 TypeOfCertificate.create([ 
