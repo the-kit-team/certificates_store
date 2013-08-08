@@ -23,7 +23,7 @@ en:
   layouts:
     application:
       title: "Certificates"
-      сopyright: © 2013 Петров Владислав
+      сopyright: © 2013 Petrov Vladislav
   home_html: "
     <h1>Welcome to site!</h1>
     <p>We are ready to create certificates for you.</p>
