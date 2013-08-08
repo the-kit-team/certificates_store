@@ -2,6 +2,11 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 ru:
+  show: Показать
+  edit: Отредактировать
+  back: Вернуться
+  destroy: Удалить
+  print_certificate: Распечатать сертификат
   layouts:
     application:
       title: Сертификаты

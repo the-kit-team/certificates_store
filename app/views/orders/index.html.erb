@@ -84,10 +84,11 @@
         <td><%= order.list_of_works_categories.map(&:title).join("/") %></td>
       </tr>
       <tr>
+        <th></th>
         <td>
-          <%= link_to 'Show', order %> |
-          <%= link_to 'Edit', edit_order_path(order) %> |
-          <%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to t('show'), order %> |
+          <%= link_to t('edit'), edit_order_path(order) %> |
+          <%= link_to t('destroy'), order, method: :delete, data: { confirm: 'Are you sure?' } %>
         </td>
       </tr>
     <% end %>

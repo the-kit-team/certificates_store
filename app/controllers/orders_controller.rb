@@ -11,6 +11,7 @@ class OrdersController < ApplicationController
 
   # GET /orders/1
   # GET /orders/1.json
+  # GET /orders/1.pdf
   def show
     @order = Order.find(params[:id])
     
