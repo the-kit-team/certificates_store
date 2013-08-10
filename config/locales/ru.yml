@@ -18,7 +18,7 @@ ru:
       title: Сертификаты
       home_page: Домашняя страница
       orders_page: Заказы
-      сopyright: © 2013 Петров Владисла
+      сopyright: © 2013 Петров Владислав
   activerecord:  
     models:
       order: Заказ

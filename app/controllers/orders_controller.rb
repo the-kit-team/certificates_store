@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
     respond_to do |format|
       format.html
       format.json { render json: @order }
-      format.pdf { send_data generate_pdf(@order), filename: "certificate.pdf", type: "application/pdf", :disposition => 'inline' }
+      format.pdf { send_data generate_pdf(@order), filename: "certificate.pdf", type: "application/pdf", disposition: 'inline' }
     end
   end
 
