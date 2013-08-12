@@ -1,6 +1,10 @@
 source 'https://rubygems.org'
 
+# Prawn gem for working with PDF files
 gem 'prawn'
+
+# To use ActiveModel has_secure_password
+gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
