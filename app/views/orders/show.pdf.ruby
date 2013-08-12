@@ -1,11 +1,4 @@
-def prawn_document(opts={})
-  download = opts.delete(:force_download)
-  pdf = (opts.delete(:renderer) || Prawn::Document).new(opts)
-  yield pdf if block_given?
-  pdf.render
-end
-
-prawn_document() do |pdf|
+Prawn::Document.new( opts={} ) do |pdf|
   pdf.font_families.update(
     "Verdana" => {
       bold: "lib/fonts/verdanab.ttf",
@@ -14,9 +7,9 @@ prawn_document() do |pdf|
     })
   pdf.font "Verdana"
   
-  #pdf.image 'lib/certificate_backgrounds/obrazec_big.jpg', at: [-36,755], width: 620, height: 795
+  pdf.image 'lib/certificate_backgrounds/obrazec_big.jpg', at: [-36,755], width: 620, height: 795
   
-  pdf.fill_color 'cc0000'
+  pdf.fill_color 'ff0000'
   pdf.text_box "#{TypeOfCertificate.find(@order.type_of_certificate_id).title}", size: 14, at: [-36,470], align: :center, width: 620
   pdf.text_box "#{TypeOfLegalEntity.find(@order.type_of_legal_entity_id).full_title}", size: 14, at: [-36,450], align: :center, width: 620
   pdf.text_box "Наименование компании: #{@order.company}", size: 14, at: [-36,430], align: :center, width: 620
@@ -26,4 +19,4 @@ prawn_document() do |pdf|
     pdf.text_box "#{category}", size: 10, at: [40,355-f], width: 400
     f += 20
   end
-end
+end.render
