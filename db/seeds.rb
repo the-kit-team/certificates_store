@@ -97,6 +97,7 @@ Order.create(
   bank_person: "Евгений Михалыч Забоблоев", 
   auditors_names: "Петр Семёновыч Карабелов, Иван Сергеич Подводников, Михаил Михайлович Лодка"
 )
+Order.first.list_of_works_category_ids = ListOfWorksCategory.first.id, ListOfWorksCategory.last.id
 puts "Заказ:"
 Order.all.map do |e| 
   puts "#{e.company}"
