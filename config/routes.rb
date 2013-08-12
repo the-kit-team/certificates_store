@@ -1,4 +1,6 @@
 CertificatesStore::Application.routes.draw do
+  resources :users
+
   get "home/index"
   
   scope '(:locale)' do
