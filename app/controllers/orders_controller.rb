@@ -1,6 +1,4 @@
 class OrdersController < ApplicationController
-  include OrdersHelper
-
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   # GET /orders
@@ -13,13 +11,6 @@ class OrdersController < ApplicationController
   # GET /orders/1.json
   # GET /orders/1.pdf
   def show
-    @order = Order.find(params[:id])
-    
-    respond_to do |format|
-      format.html
-      format.json { render json: @order }
-      format.pdf { send_data generate_pdf(@order), filename: "certificate.pdf", type: "application/pdf", disposition: 'inline' }
-    end
   end
 
   # GET /orders/new
