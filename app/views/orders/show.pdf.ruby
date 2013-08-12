@@ -1,3 +1,10 @@
+def prawn_document(opts={})
+  download = opts.delete(:force_download)
+  pdf = (opts.delete(:renderer) || Prawn::Document).new(opts)
+  yield pdf if block_given?
+  pdf.render
+end
+
 prawn_document() do |pdf|
   pdf.font_families.update(
     "Verdana" => {

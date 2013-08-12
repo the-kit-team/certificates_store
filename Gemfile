@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-gem 'prawn_rails'
 gem 'prawn'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
