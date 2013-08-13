@@ -3,19 +3,35 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #orderfilter {
-  a {
-    &#all { background: #0c0; }
-    &#new { background: #fc6; }
-    &#inwork { background: #afa; }
-    &#isdone { background: #4f4; }
-    &#canceled { color: white; background: black; }
+  width: 100%;
+  ul {
+    padding: 0;
+    margin: 0;
+    li {
+      margin: 0px -3px;
+      align: center;
+      display: inline;
+      list-style: none;
+      font: small-caps 20px/20px "Times New Roman", serif;
+      a {
+        padding: 0px 25px;
+        color: black;
+        text-decoration: none;
+        &#all      { background: #0c0; &:hover { background: #ffe; } }
+        &#new      { background: #f66; &:hover { background: #ffe; } }
+        &#inwork   { background: #9cf; &:hover { background: #ffe; } }
+        &#isdone   { background: #4f4; &:hover { background: #ffe; } }
+        &#canceled { color: white; background: black;  &:hover { color: black; background: white; } }
+      }
+    }
   }
 }
 
 .list {
+  border-collapse:collapse;
   tr {
-    &#status1 { background: #fc6; } // new
-    &#status2 { background: #afa; } // in work
+    &#status1 { background: #f66; } // new
+    &#status2 { background: #9cf; } // in work
     &#status3 { background: #4f4; } // is done
     &#status4 { color: white; background: black; } // canceled
   }

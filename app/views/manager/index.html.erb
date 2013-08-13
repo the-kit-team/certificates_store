@@ -1,11 +1,13 @@
 <h1><%= t :orders, scope: 'activerecord.models' %></h1>
 
 <div id="orderfilter">
-  <%= link_to "Все        (#{Order.count})"                             ,    manager_index_path, id: 'all' %> |
-  <%= link_to "Новые      (#{Order.count(conditions: "status_id = 1")})",   manager_newest_path, id: 'new' %> |
-  <%= link_to "Принятые   (#{Order.count(conditions: "status_id = 2")})",   manager_inwork_path, id: 'inwork' %> |
-  <%= link_to "Выполненые (#{Order.count(conditions: "status_id = 3")})",   manager_isdone_path, id: 'isdone' %> |
-  <%= link_to "Отменённый (#{Order.count(conditions: "status_id = 4")})", manager_canceled_path, id: 'canceled' %>
+  <ul>
+    <li><%= link_to "Все        (#{Order.count})"                             ,    manager_index_path, id: 'all' %></li>
+    <li><%= link_to "Новые      (#{Order.count(conditions: "status_id = 1")})",   manager_newest_path, id: 'new' %></li>
+    <li><%= link_to "Принятые   (#{Order.count(conditions: "status_id = 2")})",   manager_inwork_path, id: 'inwork' %></li>
+    <li><%= link_to "Выполненые (#{Order.count(conditions: "status_id = 3")})",   manager_isdone_path, id: 'isdone' %></li>
+    <li><%= link_to "Отменённый (#{Order.count(conditions: "status_id = 4")})", manager_canceled_path, id: 'canceled' %></li>
+  </ul>
 </div>
 
 <div id="find">
