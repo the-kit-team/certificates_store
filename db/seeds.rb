@@ -8,10 +8,10 @@
 
 Status.delete_all
 Status.create([ 
-  {title: "Новый"},
-  {title: "Принятый"},
-  {title: "Выполненный"},
-  {title: "Отменённый"}
+  {id: 1, title: "Новый"},
+  {id: 2, title: "Принятый"},
+  {id: 3, title: "Выполненный"},
+  {id: 4, title: "Отменённый"}
 ])
 puts "Статусы:"
 puts Status.all.map(&:title)
