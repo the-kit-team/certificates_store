@@ -112,8 +112,8 @@ puts Permission.all.map(&:title)
 
 User.delete_all
 User.create([ 
-  {title: "admin", permission_id: 1},
-  {title: "manager", permission_id: 2}
+  {email: "admin", password: "admin", password_confirmation: "admin", permission_id: 1},
+  {email: "manager", password: "manager", password_confirmation: "manager", permission_id: 2}
 ])
 puts "Стандартные аккаунты:"
-puts User.all.map(&:title)
+puts User.all.map(&:email)
