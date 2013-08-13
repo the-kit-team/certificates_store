@@ -2,17 +2,15 @@ CertificatesStore::Application.routes.draw do
   
   get 'admin' => 'admin#index'
   
-  controller :sessions do
-    get 'login' => :new
-    post 'login' => :create
-    delete 'logout' => :destroy
-  end
-
-  get "home/index"
-  
   scope '(:locale)' do
     resources :orders
     resources :users
+    
+    controller :sessions do
+      get 'login' => :new
+      post 'login' => :create
+      delete 'logout' => :destroy
+    end
 
     root 'home#index', as: 'home'
   end
