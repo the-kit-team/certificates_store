@@ -1,4 +1,6 @@
 class ManagerController < ApplicationController
+  # GET /manager
+  # GET /manager?status=1
   def index
     if params[:status]
       @orders = Order.where(status_id: params[:status])
@@ -7,14 +9,13 @@ class ManagerController < ApplicationController
     end
   end
   
+  # GET /find?word=searhing_word
   def find
-    @orders = Order.where("id           = #{params[:word]} or 
-                           company      = #{params[:word]} or
-                           creator_name = #{params[:word]} or
-                           phone        = #{params[:word]} or
-                           fax          = #{params[:word]} or
-                           bik          = #{params[:word]} or
-                           status_id    = #{params[:word]}")
+    @orders = Order.all.select { |e| e.company      =~ /#{params[:word]}/ } |
+              Order.all.select { |e| e.phone        =~ /#{params[:word]}/ } |
+              Order.all.select { |e| e.fax          =~ /#{params[:word]}/ } |
+              Order.all.select { |e| e.creator_name =~ /#{params[:word]}/ } |
+              Order.all.select { |e| e.email        =~ /#{params[:word]}/ }
     render template: "manager/index"
   end
   
