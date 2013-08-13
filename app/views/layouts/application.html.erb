@@ -24,15 +24,9 @@
   <div id="columns">
     <div id="side"> 
       <ul>
-        <%= content_tag(:li, link_to(t('.home_page'),     home_path, id: ("current_page" if controller.controller_name == 'home') ) ) %>
-        <% if User.find_by_id(session[:user_id]) %>
-          <% if User.find_by_id(session[:user_id]).permission_id == Permission.find_by_title("Администратор").id %>
-            <%= content_tag(:li, link_to(t('.admin_page'), admin_path, id: ("current_page" if controller.controller_name == 'admin') ) ) %>
-          <% end %>
-          <% if User.find_by_id(session[:user_id]).permission_id == Permission.find_by_title("Менеджер").id %>
-            <%= content_tag(:li, link_to(t('.manager_page'), manager_index_path, id: ("current_page" if controller.controller_name == 'manager') ) ) %>
-          <% end %>
-        <% end %>
+        <%= content_tag(:li, link_to(t('.home_page'),      home_path, id: ("current_page" if current_controller? 'home'))) %>
+        <%= content_tag(:li, link_to(t('.admin_page'),    admin_path, id: ("current_page" if current_controller? 'admin')))   if permission? "Администратор" %>
+        <%= content_tag(:li, link_to(t('.orders_page'), manager_path, id: ("current_page" if current_controller? 'manager'))) if permission? "Менеджер" %>
       </ul>
     </div>
     <div id="main"> 

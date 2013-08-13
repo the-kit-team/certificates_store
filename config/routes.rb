@@ -5,6 +5,8 @@ CertificatesStore::Application.routes.draw do
     resources :users
     
     get 'admin' => 'admin#index'
+    get 'manager' => 'manager#index'
+    
     get "manager/index"
     get "manager/newest"
     get "manager/inwork"
@@ -20,7 +22,7 @@ CertificatesStore::Application.routes.draw do
       post 'login' => :create
       delete 'logout' => :destroy
     end
-
+    
     root 'home#index', as: 'home'
   end
 
