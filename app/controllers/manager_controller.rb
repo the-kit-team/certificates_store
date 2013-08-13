@@ -11,11 +11,12 @@ class ManagerController < ApplicationController
   
   # GET /find?word=searhing_word
   def find
-    @orders = Order.all.select { |e| e.company      =~ /#{params[:word]}/ } |
-              Order.all.select { |e| e.phone        =~ /#{params[:word]}/ } |
-              Order.all.select { |e| e.fax          =~ /#{params[:word]}/ } |
-              Order.all.select { |e| e.creator_name =~ /#{params[:word]}/ } |
-              Order.all.select { |e| e.email        =~ /#{params[:word]}/ }
+    @orders = Order.all
+    @orders = @orders.select { |e| e.company      =~ /#{params[:word]}/ } |
+              @orders.select { |e| e.phone        =~ /#{params[:word]}/ } |
+              @orders.select { |e| e.fax          =~ /#{params[:word]}/ } |
+              @orders.select { |e| e.creator_name =~ /#{params[:word]}/ } |
+              @orders.select { |e| e.email        =~ /#{params[:word]}/ }
     render template: "manager/index"
   end
   
