@@ -2,7 +2,6 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 ru:
-  hello_administrator: Привет администратор
   show: Показать
   edit: Отредактировать
   back: Вернуться
@@ -10,15 +9,21 @@ ru:
   new_order: Новый заказ
   are_you_sure_to_destroy: Вы уверены что хотите удалить
   print_certificate: Распечатать сертификат
-  home_html: "
-    <h1>Добро пожаловать на сайт!</h1>
-    <p>Наш сайт готов предоставить услуги по оформлению сертификатов.</p>
-  "
+  home:
+    index:
+      home_html: "
+        <h1>Добро пожаловать на сайт!</h1>
+        <p>Наш сайт готов предоставить услуги по оформлению сертификатов.</p>
+      "
+  admin:
+    index:
+      hello_administrator: Привет администратор
   layouts:
     application:
       title: Сертификаты
       home_page: Домашняя страница
       orders_page: Заказы
+      admin_page: Администрирование
       сopyright: © 2013 Петров Владислав
   activerecord:  
     models:
