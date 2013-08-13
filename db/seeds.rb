@@ -101,3 +101,19 @@ puts "Заказ:"
 Order.all.map do |e| 
   puts "#{e.company}"
 end
+
+Permission.delete_all
+Permission.create([ 
+  {id: 1, title: "Администратор"},
+  {id: 2, title: "Менеджер"}
+])
+puts "Стандартные разрешения:"
+puts Permission.all.map(&:title)
+
+User.delete_all
+User.create([ 
+  {title: "admin", permission_id: 1},
+  {title: "manager", permission_id: 2}
+])
+puts "Стандартные аккаунты:"
+puts User.all.map(&:title)
