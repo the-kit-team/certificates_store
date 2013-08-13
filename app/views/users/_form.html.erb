@@ -23,6 +23,14 @@
     <%= f.label :password_confirmation %><br>
     <%= f.password_field :password_confirmation %>
   </div>
+  <div>
+    <% if User.find_by_id(session[:user_id]) %>
+      <% if User.find_by_id(session[:user_id]).email == "admin" %>
+        <%= f.label :permission %><br>
+        <%= f.collection_select :permission_id, Permission.all, :id, :title %>
+      <% end %>
+    <% end %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
