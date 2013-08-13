@@ -30,6 +30,7 @@
 .list {
   border-collapse:collapse;
   tr {
+    th { width: 100px; }
     &#status1 { background: #f66; } // new
     &#status2 { background: #9cf; } // in work
     &#status3 { background: #4f4; } // is done

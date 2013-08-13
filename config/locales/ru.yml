@@ -19,6 +19,13 @@ ru:
         <p>Наш сайт готов предоставить услуги по оформлению сертификатов.</p>
       "
       create_order: Обормить заказ
+  manager:
+    index:
+      all: Все
+      newest: Новые
+      inwork: Принятые
+      isdone: Выполненые
+      canceled: Отменённые
   admin:
     index:
       hello_administrator: Привет администратор
@@ -60,6 +67,8 @@ ru:
         bank_person: Имя вкладчика
         auditors_names: Имя(на) аудитора(ов)(ФИО)
         list_of_works_category: Разделы перечня работ
+        created_at: Создан
+        updated_at: Обнавлён
       user:
         email: Электропочта
         password: Пароль

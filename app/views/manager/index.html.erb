@@ -2,11 +2,11 @@
 
 <div id="orderfilter">
   <ul>
-    <li><%= link_to "Все        (#{Order.count})"                             ,    manager_index_path, id: 'all' %></li>
-    <li><%= link_to "Новые      (#{Order.count(conditions: "status_id = 1")})",   manager_newest_path, id: 'new' %></li>
-    <li><%= link_to "Принятые   (#{Order.count(conditions: "status_id = 2")})",   manager_inwork_path, id: 'inwork' %></li>
-    <li><%= link_to "Выполненые (#{Order.count(conditions: "status_id = 3")})",   manager_isdone_path, id: 'isdone' %></li>
-    <li><%= link_to "Отменённый (#{Order.count(conditions: "status_id = 4")})", manager_canceled_path, id: 'canceled' %></li>
+    <li><%= link_to t('.all')      + "(#{Order.count})"                             ,    manager_index_path, id: 'all' %></li>
+    <li><%= link_to t('.newest')   + "(#{Order.count(conditions: "status_id = 1")})",   manager_newest_path, id: 'new' %></li>
+    <li><%= link_to t('.inwork')   + "(#{Order.count(conditions: "status_id = 2")})",   manager_inwork_path, id: 'inwork' %></li>
+    <li><%= link_to t('.isdone')   + "(#{Order.count(conditions: "status_id = 3")})",   manager_isdone_path, id: 'isdone' %></li>
+    <li><%= link_to t('.canceled') + "(#{Order.count(conditions: "status_id = 4")})", manager_canceled_path, id: 'canceled' %></li>
   </ul>
 </div>
 
