@@ -11,7 +11,7 @@
       <th></th>
     </tr>
     <% @orders.each do |order| %>
-      <tr>
+      <tr id=<%= "status#{order.status_id}" %>>
         <td><%= l order.created_at %></td>
         <td><%= l order.updated_at %></td>
         <td><%= "#{TypeOfLegalEntity.find(order.type_of_legal_entity_id).title} #{order.company}" %></td>
