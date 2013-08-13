@@ -5,7 +5,7 @@
 <table>
   <thead>
     <tr>
-      <th>Name</th>
+      <th>Email</th>
       <th>Password digest</th>
       <th></th>
       <th></th>
@@ -16,7 +16,7 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= user.name %></td>
+        <td><%= user.email %></td>
         <td><%= user.password_digest %></td>
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
