@@ -18,6 +18,9 @@ ru:
   admin:
     index:
       hello_administrator: Привет администратор
+  users:
+    index:
+      listing_users: Пользователи
   layouts:
     application:
       title: Сертификаты
@@ -29,6 +32,8 @@ ru:
     models:
       order: Заказ
       orders: Заказы
+      user: Пользователь
+      users: Пользователи
     attributes:
       order:
         type_of_certificate: Тип сертификата
@@ -51,6 +56,12 @@ ru:
         bank_person: Имя вкладчика
         auditors_names: Имя(на) аудитора(ов)(ФИО)
         list_of_works_category: Разделы перечня работ
+      user:
+        email: Электропочта
+        password: Пароль
+        password_confirmation: Подтверждение пароля
+        permission: Разрешение
+        password_digest: Закадированый пароль
   errors: &errors
     format: ! '%{attribute} %{message}'
     messages:

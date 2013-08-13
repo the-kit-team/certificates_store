@@ -1,12 +1,13 @@
-<h1>Listing users</h1>
+<h1><%= t('.listing_users') %></h1>
   <% if notice %>
     <p id="notice"><%= notice %></p> 
   <% end %>
 <table>
   <thead>
     <tr>
-      <th>Email</th>
-      <th>Password digest</th>
+      <th><%= t :email, scope: 'activerecord.attributes.user' %></th>
+      <th><%= t :password_digest, scope: 'activerecord.attributes.user' %></th>
+      <th><%= t :permission, scope: 'activerecord.attributes.user' %></th>
       <th></th>
       <th></th>
       <th></th>
@@ -18,6 +19,7 @@
       <tr>
         <td><%= user.email %></td>
         <td><%= user.password_digest %></td>
+        <td><%= Permission.find(user.permission_id).title %></td>
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
