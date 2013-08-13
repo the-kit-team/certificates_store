@@ -7,12 +7,6 @@ CertificatesStore::Application.routes.draw do
     get 'admin' => 'admin#index'
     get 'manager' => 'manager#index'
     
-    get "manager/index"
-    get "manager/newest"
-    get "manager/inwork"
-    get "manager/isdone"
-    get "manager/canceled"
-    
     controller :manager do
       get 'find' => :find
     end

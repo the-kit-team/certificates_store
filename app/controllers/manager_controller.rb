@@ -1,22 +1,10 @@
 class ManagerController < ApplicationController
   def index
-    @orders = Order.all
-  end
-
-  def newest
-    @orders = Order.where(status_id: 1)
-  end
-
-  def inwork
-    @orders = Order.where(status_id: 2)
-  end
-
-  def isdone
-    @orders = Order.where(status_id: 3)
-  end
-
-  def canceled
-    @orders = Order.where(status_id: 4)
+    if params[:status]
+      @orders = Order.where(status_id: params[:status])
+    else
+      @orders = Order.all
+    end
   end
   
   def find
