@@ -12,14 +12,25 @@
     <%= @page_title || t('.title') %>
     <div id="language">
       <%= link_to('english', url_for(locale: 'en')) %> |
-      <%= link_to('russian', url_for(locale: 'ru')) %>
+      <%= link_to('russian', url_for(locale: 'ru')) %><br/>
+      <% if User.find_by_id(session[:user_id]) %>
+        <%= "Hello #{User.find_by_id(session[:user_id]).name}" %>
+        <%= link_to t('logout'), logout_url, method: :delete %>
+      <% else %>
+        <%= link_to t('login'), login_path %>
+      <% end %>
     </div>
   </div>
   <div id="columns">
     <div id="side"> 
       <ul>
-        <%= content_tag(:li, link_to(t('.home_page'), home_path, :id => ("current_page" if controller.controller_name == 'home') ) ) %>
-        <%= content_tag(:li, link_to(t('.orders_page'), orders_path, :id => ("current_page" if controller.controller_name == 'orders') ) ) %>
+        <%= content_tag(:li, link_to(t('.home_page'),     home_path, id: ("current_page" if controller.controller_name == 'home') ) ) %>
+        <%= content_tag(:li, link_to(t('.orders_page'), orders_path, id: ("current_page" if controller.controller_name == 'orders') ) ) %>
+        <% if User.find_by_id(session[:user_id]) %>
+          <% if User.find_by_id(session[:user_id]).name == "admin" %>
+            <%= content_tag(:li, link_to(t('.admin_page'), admin_path, id: ("current_page" if controller.controller_name == 'admin') ) ) %>
+          <% end %>
+        <% end %>
       </ul>
     </div>
     <div id="main"> 
