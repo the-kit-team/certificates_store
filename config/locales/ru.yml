@@ -2,6 +2,9 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 ru:
+  time:
+    formats:
+      default: '%d.%m.%Y %H:%m'
   show: Показать
   edit: Отредактировать
   back: Вернуться
@@ -15,6 +18,7 @@ ru:
         <h1>Добро пожаловать на сайт!</h1>
         <p>Наш сайт готов предоставить услуги по оформлению сертификатов.</p>
       "
+      create_order: Обормить заказ
   admin:
     index:
       hello_administrator: Привет администратор

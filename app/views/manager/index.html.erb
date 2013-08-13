@@ -1,2 +1,28 @@
-<h1>Manager#index</h1>
-<p>Find me in app/views/manager/index.html.erb</p>
+<h1><%= t :orders, scope: 'activerecord.models' %></h1>
+
+<table class="list">
+  <tbody>
+    <tr>
+      <th><%= t :created_at,   scope: 'activerecord.attributes.order' %></th>
+      <th><%= t :updated_at,    scope: 'activerecord.attributes.order' %></th>
+      <th><%= t :company,      scope: 'activerecord.attributes.order' %></th>
+      <th><%= t :creator_name, scope: 'activerecord.attributes.order' %></th>
+      <th><%= t :phone,        scope: 'activerecord.attributes.order' %></th>
+      <th></th>
+    </tr>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= l order.created_at %></td>
+        <td><%= l order.updated_at %></td>
+        <td><%= "#{TypeOfLegalEntity.find(order.type_of_legal_entity_id).title} #{order.company}" %></td>
+        <td><%= order.creator_name %></td>
+        <td><%= order.phone %></td>
+        <td>
+          <%= link_to t('show'), order %> |
+          <%= link_to t('edit'), edit_order_path(order) %> |
+          <%= link_to t('destroy'), order, method: :delete, data: { confirm: t('are_you_sure_to_destroy')+'?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
