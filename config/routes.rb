@@ -1,5 +1,8 @@
 CertificatesStore::Application.routes.draw do
   
+  get "manager/index"
+  get "manager/show"
+  get "manager/find"
   get 'admin' => 'admin#index'
   
   scope '(:locale)' do
