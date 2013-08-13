@@ -1,13 +1,19 @@
 CertificatesStore::Application.routes.draw do
   
-  get "manager/index"
-  get "manager/show"
-  get "manager/find"
-  get 'admin' => 'admin#index'
-  
   scope '(:locale)' do
     resources :orders
     resources :users
+    
+    get 'admin' => 'admin#index'
+    get "manager/index"
+    get "manager/newest"
+    get "manager/inwork"
+    get "manager/isdone"
+    get "manager/canceled"
+    
+    controller :manager do
+      get 'find' => :find
+    end
     
     controller :sessions do
       get 'login' => :new

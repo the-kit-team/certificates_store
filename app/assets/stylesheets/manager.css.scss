@@ -2,9 +2,21 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#orderfilter {
+  a {
+    &#all { background: #0c0; }
+    &#new { background: #fc6; }
+    &#inwork { background: #afa; }
+    &#isdone { background: #4f4; }
+    &#canceled { color: white; background: black; }
+  }
+}
+
 .list {
   tr {
-    td { padding: 0px -20px; }
-    &#status1 { background: #afa; }
+    &#status1 { background: #fc6; } // new
+    &#status2 { background: #afa; } // in work
+    &#status3 { background: #4f4; } // is done
+    &#status4 { color: white; background: black; } // canceled
   }
 }

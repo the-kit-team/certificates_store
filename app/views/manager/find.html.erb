@@ -1,1 +1,7 @@
-<%= render 'index' %>
+<form action="/find" method="get">
+  <fieldset>
+    <legend>Find</legend>
+    <input type="text" name="word">
+    <%= submit_tag "Find" %> К сожалению поиск на русском языке не работает, пока поиск только по полным названиям
+  </fieldset>
+</form>
