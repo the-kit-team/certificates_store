@@ -2,11 +2,11 @@
 
 <div id="orderfilter">
   <ul>
+    <li><%= link_to t('.canceled') + "(#{Order.where(status_id: 4).count})", manager_path(status: 4), id: 'canceled' %></li>
     <li><%= link_to t('.all')      + "(#{Order.count})"                    , manager_path,            id: 'all' %></li>
     <li><%= link_to t('.newest')   + "(#{Order.where(status_id: 1).count})", manager_path(status: 1), id: 'new' %></li>
     <li><%= link_to t('.inwork')   + "(#{Order.where(status_id: 2).count})", manager_path(status: 2), id: 'inwork' %></li>
     <li><%= link_to t('.isdone')   + "(#{Order.where(status_id: 3).count})", manager_path(status: 3), id: 'isdone' %></li>
-    <li><%= link_to t('.canceled') + "(#{Order.where(status_id: 4).count})", manager_path(status: 4), id: 'canceled' %></li>
   </ul>
 </div>
 
@@ -17,21 +17,21 @@
 <table class="list">
   <tbody>
     <tr>
-      <th><%= t :created_at,   scope: 'activerecord.attributes.order' %></th>
-      <th><%= t :updated_at,   scope: 'activerecord.attributes.order' %></th>
-      <th><%= t :company,      scope: 'activerecord.attributes.order' %></th>
-      <th><%= t :creator_name, scope: 'activerecord.attributes.order' %></th>
-      <th><%= t :phone,        scope: 'activerecord.attributes.order' %></th>
-      <th></th>
+      <th id="created_at">  <%= t :created_at,   scope: 'activerecord.attributes.order' %></th>
+      <th id="updated_at">  <%= t :updated_at,   scope: 'activerecord.attributes.order' %></th>
+      <th id="company">     <%= t :company,      scope: 'activerecord.attributes.order' %></th>
+      <th id="creator_name"><%= t :creator_name, scope: 'activerecord.attributes.order' %></th>
+      <th id="phone">       <%= t :phone,        scope: 'activerecord.attributes.order' %></th>
+      <th id="actions"></th>
     </tr>
     <% @orders.each do |order| %>
       <tr id=<%= "status#{order.status_id}" %>>
         <td><%= l order.created_at %></td>
         <td><%= l order.updated_at %></td>
         <td><%= "#{TypeOfLegalEntity.find(order.type_of_legal_entity_id).title} #{order.company}" %></td>
-        <td><%= order.creator_name %></td>
+        <td><%= get_lastname_and_abbreviation order.creator_name  %></td>
         <td><%= order.phone %></td>
-        <td>
+        <td id="actions">
           <%= link_to t('show'), order %> |
           <%= link_to t('edit'), edit_order_path(order) %> |
           <%= link_to t('destroy'), order, method: :delete, data: { confirm: t('are_you_sure_to_destroy')+'?' } %>
