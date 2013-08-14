@@ -104,8 +104,9 @@ end
 
 Permission.delete_all
 Permission.create([ 
-  {id: 1, title: "Администратор"},
-  {id: 2, title: "Менеджер"}
+  {id: 1, title: "admin"},
+  {id: 2, title: "manager"},
+  {id: 3, title: "client"}
 ])
 puts "Стандартные разрешения:"
 puts Permission.all.map(&:title)
