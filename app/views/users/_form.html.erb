@@ -23,7 +23,7 @@
     <%= f.label :password_confirmation %><br>
     <%= f.password_field :password_confirmation %>
   </div>
-  <% if permission? "Администратор" %>
+  <% if permission == "admin" %>
     <div>
       <%= f.label :permission %><br>
       <%= f.collection_select :permission_id, Permission.all, :id, :title %>

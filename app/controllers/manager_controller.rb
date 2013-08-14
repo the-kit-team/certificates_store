@@ -1,4 +1,8 @@
 class ManagerController < ApplicationController
+  include ApplicationHelper
+  
+  before_action :check_permissions
+  
   # GET /manager
   # GET /manager?status=1
   def index
@@ -20,7 +24,13 @@ class ManagerController < ApplicationController
     render template: "manager/index"
   end
   
-  def manager_params
-    params.require(:manager).permit(:word)
-  end
+  private
+  
+    def manager_params
+      params.require(:manager).permit(:word)
+    end
+    
+    def check_permissions
+      redirect_to home_path if permission != 'manager'
+    end
 end
