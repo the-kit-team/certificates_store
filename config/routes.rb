@@ -1,5 +1,7 @@
 CertificatesStore::Application.routes.draw do
   
+  get "my_orders/index"
+  get "my_orders/show"
   scope '(:locale)' do
     resources :orders
     resources :users
