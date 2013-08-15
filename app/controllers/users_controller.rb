@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
+  include ApplicationHelper
+    
   skip_before_action :authorize, only: [:new, :create]
+  skip_before_action :authorize if :permission == 'admin'
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users

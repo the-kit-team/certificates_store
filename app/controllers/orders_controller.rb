@@ -2,8 +2,8 @@ class OrdersController < ApplicationController
   include ApplicationHelper
     
   skip_before_action :authorize, only: [:new, :create]
-  
-  before_action :check_permission, :set_order, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authorize if :pemission == 'admin'
+  before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   # GET /orders
   # GET /orders.json
@@ -76,9 +76,5 @@ class OrdersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
       params.require(:order).permit(:type_of_certificate_id, :type_of_legal_entity_id, :company, :creator_name, :registered_address, :actual_address, :address_on_english, :phone, :fax, :email, :inn, :kpp, :ogrn, :bank, :current_account, :correspondent_account, :bik, :bank_person, :auditors_names, :status_id, :list_of_works_category_ids => [])
-    end
-    
-    def check_permission
-      skip_before_action :authorize, only: [:new, :create, :show, :edit, :update, :destroy] if permission == 'manager' or permission == 'admin'
     end
 end
