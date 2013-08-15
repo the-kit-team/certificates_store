@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   include ApplicationHelper
     
   skip_before_action :authorize, only: [:new, :create]
-  before_action :check_pemissions
+  before_action :check_pemissions, only: [:show, :edit, :update, :destroy]
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   # GET /orders
@@ -34,7 +34,7 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.save
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
+        format.html { redirect_to home_path, notice: 'Order was successfully created.' }
         format.json { render action: 'show', status: :created, location: @order }
       else
         format.html { render action: 'new' }
@@ -48,7 +48,7 @@ class OrdersController < ApplicationController
   def update
     respond_to do |format|
       if @order.update(order_params)
-        format.html { redirect_to @order, notice: 'Order was successfully updated.' }
+        format.html { redirect_to home_path, notice: 'Order was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -79,6 +79,6 @@ class OrdersController < ApplicationController
     end
     
     def check_pemissions
-      redirect_to home_path if not permission == 'admin'
-    end
+      redirect_to home_path if not (permission == 'admin' or permission == 'manager')
+    end 
 end
