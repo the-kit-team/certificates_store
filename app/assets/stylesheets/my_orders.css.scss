@@ -1,3 +1,23 @@
 // Place all the styles related to the MyOrders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.list {
+  border-collapse:collapse;
+  tr {
+    height: 35px;
+    th { 
+      background: #fff;
+      &#actions      { width: 30%; }
+    }
+    #actions {
+      text-align: right;
+      padding-right: 10px;
+      a { color: white; &:hover { color: black; background: #fff; } }
+    }
+    &#status1 { background: #f66; } // new
+    &#status2 { background: #9cf; } // in work
+    &#status3 { background: #4e4; } // is done
+    &#status4 { color: white; background: black; } // canceled
+  }
+}

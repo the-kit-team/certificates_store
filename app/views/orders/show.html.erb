@@ -97,7 +97,7 @@
     <strong><%= t :list_of_works_category, scope: 'activerecord.attributes.order' %></strong>
     <%= @order.list_of_works_categories.map(&:title).join("/") %>
   </p>
-  <%= link_to t('edit'), edit_order_path(@order) %> |
+  <%= link_to t('edit'), edit_order_path(@order) if (permission == 'admin' or permission == 'manager') %> |
   <%= link_to t('back'), :back %> |
-  <%= link_to t('print_certificate'), format: :pdf %>
+  <%= link_to t('print_certificate'), format: :pdf  if (permission == 'admin' or permission == 'manager') %>
 </div>

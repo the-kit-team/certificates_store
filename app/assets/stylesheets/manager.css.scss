@@ -30,17 +30,16 @@
           border: solid transparent;
           position: absolute;
           border-left-color: #ffe;
-          border-width: 22px;
+          border-width: 25px;
           border-bottom-width: 0px;
           top: 100%;
-          margin-top: -22px;
+          margin-top: -25px;
         }
         &:after {
           content: " ";
           right: 0%;
           border: solid transparent;
           position: absolute;
-          border-color: rgba(255, 255, 238, 0);
           border-right-color: #ffe;
           border-width: 22px;
           border-top-width: 0px;

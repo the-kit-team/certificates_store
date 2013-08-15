@@ -1,1 +1,30 @@
 <h1><%= t :orders, scope: 'activerecord.models' %></h1>
+
+<% if @orders %>
+  <table class="list">
+    <tbody>
+      <tr>
+        <th id="created_at">  <%= t :created_at,   scope: 'activerecord.attributes.order' %></th>
+        <th id="updated_at">  <%= t :updated_at,   scope: 'activerecord.attributes.order' %></th>
+        <th id="company">     <%= t :company,      scope: 'activerecord.attributes.order' %></th>
+        <th id="creator_name"><%= t :creator_name, scope: 'activerecord.attributes.order' %></th>
+        <th id="phone">       <%= t :phone,        scope: 'activerecord.attributes.order' %></th>
+        <th id="actions"></th>
+      </tr>
+      <% @orders.each do |order| %>
+        <tr id=<%= "status#{order.status_id}" %>>
+          <td><%= l order.created_at %></td>
+          <td><%= l order.updated_at %></td>
+          <td><%= "#{TypeOfLegalEntity.find(order.type_of_legal_entity_id).title} #{order.company}" %></td>
+          <td><%= get_lastname_and_abbreviation order.creator_name  %></td>
+          <td><%= order.phone %></td>
+          <td id="actions">
+            <%= link_to t('show'), my_orders_path(order_id: order.id) %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <h4><%= t '.you_now_have_orders' %></h4>
+<% end %>

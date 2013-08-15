@@ -1,13 +1,16 @@
 CertificatesStore::Application.routes.draw do
-  
-  get "my_orders/index"
-  get "my_orders/show"
+
   scope '(:locale)' do
     resources :orders
     resources :users
     
     get 'admin' => 'admin#index'
     get 'manager' => 'manager#index'
+    get 'my_orders' => 'my_orders#index'
+    
+    controller :my_orders do
+      get 'show' => :show
+    end
     
     controller :manager do
       get 'find' => :find
