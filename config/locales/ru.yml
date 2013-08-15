@@ -38,6 +38,8 @@ ru:
       home_page: Домашняя страница
       orders_page: Заказы
       admin_page: Администрирование
+      manager_page: Страничка медеджера
+      users_page: Пользователи
       сopyright: © 2013 Петров Владислав
   activerecord:  
     models:

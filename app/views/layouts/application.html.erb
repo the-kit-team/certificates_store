@@ -24,9 +24,11 @@
   <div id="columns">
     <div id="side"> 
       <ul>
-        <%= content_tag(:li, link_to(t('.home_page'),      home_path, id: ("current_page" if controller.controller_name == 'home'))) %>
-        <%= content_tag(:li, link_to(t('.admin_page'),    admin_path, id: ("current_page" if controller.controller_name == 'admin')))   if permission == 'admin' %>
-        <%= content_tag(:li, link_to(t('.orders_page'), manager_path, id: ("current_page" if controller.controller_name == 'manager'))) if permission == 'manager' %>
+        <%= content_tag(:li, link_to(t('.home_page'),       home_path, id: ("current_page" if controller.controller_name == 'home'))) %>
+        <%= content_tag(:li, link_to(t('.admin_page'),     admin_path, id: ("current_page" if controller.controller_name == 'admin')))   if permission == 'admin' %>
+        <%= content_tag(:li, link_to(t('.orders_page'),   orders_path, id: ("current_page" if controller.controller_name == 'orders')))  if permission == 'admin' %>
+        <%= content_tag(:li, link_to(t('.users_page'),     users_path, id: ("current_page" if controller.controller_name == 'users')))   if permission == 'admin' %>
+        <%= content_tag(:li, link_to(t('.manager_page'), manager_path, id: ("current_page" if controller.controller_name == 'manager'))) if permission == 'manager' or permission == 'admin'  %>
       </ul>
     </div>
     <div id="main"> 
