@@ -1,6 +1,6 @@
 <h1><%= t :orders, scope: 'activerecord.models' %></h1>
 
-<div id="orderfilter">
+<div id="ordersfilter">
   <ul>
     <li><%= link_to t('.canceled') + "(#{Order.where(status_id: 4).count})", manager_path(status: 4), id: 'canceled' %></li>
     <li><%= link_to t('.all')      + "(#{Order.count})"                    , manager_path,            id: 'all' %></li>
