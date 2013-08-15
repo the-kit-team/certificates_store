@@ -18,7 +18,7 @@ ru:
         <h1>Добро пожаловать на сайт!</h1>
         <p>Наш сайт готов предоставить услуги по оформлению сертификатов.</p>
       "
-      create_order: Обормить заказ
+      create_order: Оформить заказ
   manager:
     index:
       all: Все
@@ -71,7 +71,7 @@ ru:
         auditors_names: Имя(на) аудитора(ов)(ФИО)
         list_of_works_category: Разделы перечня работ
         created_at: Создан
-        updated_at: Обнавлён
+        updated_at: Обновлён
       user:
         email: Электропочта
         password: Пароль
