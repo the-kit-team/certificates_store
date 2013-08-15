@@ -40,6 +40,7 @@ ru:
       admin_page: Администрирование
       manager_page: Страничка медеджера
       users_page: Пользователи
+      my_orders_page: Мои заказы
       сopyright: © 2013 Петров Владислав
   activerecord:  
     models:
