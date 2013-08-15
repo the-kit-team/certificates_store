@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-  include ApplicationHelper
-    
   skip_before_action :authorize, only: [:new, :create]
   before_action :check_pemissions, only: [:show, :edit, :update, :destroy]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
