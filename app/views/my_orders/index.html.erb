@@ -19,7 +19,7 @@
           <td><%= get_lastname_and_abbreviation order.creator_name  %></td>
           <td><%= order.phone %></td>
           <td id="actions">
-            <%= link_to t('show'), my_orders_path(order_id: order.id) %>
+            <%= link_to t('show'), controller: "my_orders", action: "show", id: order.id %>
           </td>
         </tr>
       <% end %>

@@ -4,9 +4,8 @@ class MyOrdersController < ApplicationController
     @orders = Order.where(email: session[:user_email])
   end
 
-  # GET /myorders/1
+  # GET /show?id=1
   def show
-    @order = Order.find(params[:order_id])
-    render template: "my_orders/show"
+    @order = Order.find(params[:id])
   end
 end
