@@ -1,5 +1,5 @@
 class MyOrdersController < ApplicationController
-  # GET /myorders
+  # GET /my_orders
   def index
     @orders = Order.where(email: session[:user_email])
   end
