@@ -1,8 +1,7 @@
 class MyOrdersController < ApplicationController
   # GET /myorders
   def index
-    show if params[:order_id]
-    @orders = Order.all.select { |e| e.email == User.find_by_id(session[:user_id]).email }
+    @orders = Order.where(email: session[:user_email])
   end
 
   # GET /myorders/1
