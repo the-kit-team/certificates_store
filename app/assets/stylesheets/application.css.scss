@@ -45,13 +45,15 @@ body {
           align: center;
           display: inline;
           list-style: none;
+          color: #000;
+          background: #ffe;
           font: small-caps 22px/22px "Times New Roman", serif;
           a {
+            color: #fff;
             padding: 0px 25px;
-            color: #FFF;
+            background: #000;
             text-decoration: none;
-            &:hover { background: #00CC99; }
-            &#current_page { color: #000; background: #FFE; }
+            &:hover { color: #000; background: #0c9; }
           }
         }
       }
@@ -60,12 +62,12 @@ body {
     #main {
       margin: 0px 10%;
       padding: 1em;
-      background: #FFFFEE;
+      background: #ffe;
     }
   }
   #footer {
     font: small-caps 16px/16px "Times New Roman", serif;
-    color: #AAA;
+    color: #aaa;
     text-align: center;
     width: 100%;
     height: 30px;
