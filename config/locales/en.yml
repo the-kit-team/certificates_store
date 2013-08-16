@@ -27,8 +27,10 @@ en:
     application:
       title: "Certificates"
       сopyright: © 2013 Petrov Vladislav
-  home_html: "
-    <h1>Welcome to site!</h1>
-    <p>We are ready to create certificates for you.</p>
-  "
+  home:
+    index:
+      home_html: "
+        <h1>Welcome to site!</h1>
+        <p>We are ready to create certificates for you.</p>
+      "
   are_you_sure_to_destroy: Are you sure to destroy

@@ -57,9 +57,11 @@
     height: 35px;
     th { 
       background: #fff;
-      &#actions      { width: 30%; }
+      border-top: 1px solid black;
     }
+    #id { padding-left: 10px; width: 80px; }
     #actions {
+      width: 30%;
       text-align: right;
       padding-right: 10px;
       a { color: white; &:hover { color: black; background: #fff; } }

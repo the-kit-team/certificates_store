@@ -6,15 +6,15 @@
     <fieldset>
       <legend>Please Log In</legend>
       <div>
-        <%= label_tag :email, 'Name:' %>
-        <%= text_field_tag :email, params[:email] %>
+        <%= label_tag :email %>
+        <%= email_field_tag :email, params[:email] %>
       </div> 
       <div>
-          <%= label_tag :password, 'Password:' %>
-          <%= password_field_tag :password, params[:password] %>
+        <%= label_tag :password %>
+        <%= password_field_tag :password, params[:password] %>
       </div>
       <div>
-          <%= link_to t('.create_new_user'), new_user_path %>
+        <%= link_to t('.create_new_user'), new_user_path %>
       </div> 
       <div>
         <%= submit_tag "Login" %> 
