@@ -24,18 +24,18 @@
   <div id="columns">
     <div id="side"> 
       <ul>
-        <%= content_tag(:li, link_to(t('.home_page'), home_path, id: ("current_page" if controller.controller_name == 'home'))) %>
+        <li><%= link_to t('.home_page'), home_path, id: ("current_page" if controller.controller_name == 'home') %></li>
         <% if current_user %>
           <% if current_user.client? %>
-            <%= content_tag(:li, link_to(t('.my_orders_page'), my_orders_path, id: ("current_page" if controller.controller_name == 'my_orders'))) %>
+            <li><%= link_to t('.my_orders_page'), my_orders_path, id: ("current_page" if controller.controller_name == 'my_orders') %></li>
           <% end %>
           <% if current_user.admin? %>
-            <%= content_tag(:li, link_to(t('.admin_page'),   admin_path, id: ("current_page" if controller.controller_name == 'admin'))) %>
-            <%= content_tag(:li, link_to(t('.orders_page'), orders_path, id: ("current_page" if controller.controller_name == 'orders'))) %>
-            <%= content_tag(:li, link_to(t('.users_page'),   users_path, id: ("current_page" if controller.controller_name == 'users'))) %>
+            <li><%= link_to t('.admin_page'),  admin_path, id: ("current_page" if controller.controller_name == 'admin') %></li>
+            <li><%= link_to t('.orders_page'), orders_path, id: ("current_page" if controller.controller_name == 'orders') %></li>
+            <li><%= link_to t('.users_page'),  users_path, id: ("current_page" if controller.controller_name == 'users') %></li>
           <% end %>
           <% if current_user.manager? or current_user.admin? %>
-            <%= content_tag(:li, link_to(t('.manager_page'),     manager_path, id: ("current_page" if controller.controller_name == 'manager'))) %>
+            <li><%= link_to t('.manager_page'), manager_path, id: ("current_page" if controller.controller_name == 'manager') %></li>
           <% end %>
         <% end %>
       </ul>
