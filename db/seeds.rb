@@ -8,35 +8,35 @@
 
 Status.delete_all
 Status.create([ 
-  {id: 1, title: "Новый"},
-  {id: 2, title: "Принятый"},
-  {id: 3, title: "Выполненный"},
-  {id: 4, title: "Отменённый"}
+  {id: 1, title: "New"},
+  {id: 2, title: "Inwork"},
+  {id: 3, title: "Isdone"},
+  {id: 4, title: "Canceled"}
 ])
 puts "Статусы:"
 puts Status.all.map(&:title)
 
 TypeOfLegalEntity.delete_all
 TypeOfLegalEntity.create([ 
-  {title: "ООО", full_title: "Общество с ограниченной ответственностью"},
-  {title: "ИП", full_title: "Индивидуальный предприниматель"},
-  {title: "ЗАО", full_title: "Закрытое акционерное общество"},
-  {title: "ОАО", full_title: "Открытое акционерное общество"},
-  {title: "НП", full_title: "Некоммерческое партнерство"}
+  {id: 1, title: "ООО", full_title: "Общество с ограниченной ответственностью"},
+  {id: 2, title: "ИП", full_title: "Индивидуальный предприниматель"},
+  {id: 3, title: "ЗАО", full_title: "Закрытое акционерное общество"},
+  {id: 4, title: "ОАО", full_title: "Открытое акционерное общество"},
+  {id: 5, title: "НП", full_title: "Некоммерческое партнерство"}
 ])
 puts "Типы юридического лица:"
 puts TypeOfLegalEntity.all.map { |e| "#{e.title} = #{e.full_title}" }
 
 TypeOfCertificate.delete_all
 TypeOfCertificate.create([ 
-  {title: "ГОСТ ISO 9001-2011 (ISO 9001:2008)"},
-  {title: "ГОСТ Р ИСО 14001-2007 (ISO 14001:2004)"},
-  {title: "ГОСТ Р 12.0.230-2007 (OHSAS 18001:2007)"},
-  {title: "ГОСТ Р ИСО/МЭК 27001-2006 (ISO/IEC 27001:2005)"},
-  {title: "SA 8000:2008"},
-  {title: "ISO 50001:2011"},
-  {title: "ISO 22000:2005"},
-  {title: "ISO 22301:2012"}
+  {id: 1, title: "ГОСТ ISO 9001-2011 (ISO 9001:2008)"},
+  {id: 2, title: "ГОСТ Р ИСО 14001-2007 (ISO 14001:2004)"},
+  {id: 3, title: "ГОСТ Р 12.0.230-2007 (OHSAS 18001:2007)"},
+  {id: 4, title: "ГОСТ Р ИСО/МЭК 27001-2006 (ISO/IEC 27001:2005)"},
+  {id: 5, title: "SA 8000:2008"},
+  {id: 6, title: "ISO 50001:2011"},
+  {id: 7, title: "ISO 22000:2005"},
+  {id: 8, title: "ISO 22301:2012"}
 ])
 puts "Типы сертификатов:"
 puts TypeOfCertificate.all.map(&:title)
@@ -73,35 +73,6 @@ end
 puts "Категории перечьня работ:"
 puts ListOfWorksCategory.all.map(&:title)
 
-Order.delete_all
-Order.create(
-  id: 1,
-  type_of_certificate_id: TypeOfCertificate.find_by_title("ГОСТ ISO 9001-2011 (ISO 9001:2008)").id, 
-  type_of_legal_entity_id: TypeOfLegalEntity.find_by_title("ОАО").id, 
-  status_id: Status.find_by_title("Новый").id, 
-  company: "Булыжник сервис", 
-  creator_name: "Булыжников Юрий Андропович", 
-  registered_address: "123456, Лондон, Пикадили 13", 
-  actual_address: "123456, Лондон, Пикадили 13", 
-  address_on_english: "123456, Landon, Pekkodilli 13", 
-  phone: "1234567",
-  fax: "1234567",
-  email: "ya@ya.ru", 
-  inn: "123456789", 
-  kpp: "123456656", 
-  ogrn: "254354235432", 
-  bank: "Крупный", 
-  current_account: "253545432534542353542657887", 
-  correspondent_account: "31819875847591798579875984", 
-  bik: "1347465788657842", 
-  bank_person: "Евгений Михалыч Забоблоев", 
-  auditors_names: "Петр Семёновыч Карабелов, Иван Сергеич Подводников, Михаил Михайлович Лодка"
-)
-puts "Заказ:"
-Order.all.map do |e| 
-  puts "#{e.company}"
-end
-
 Permission.delete_all
 Permission.create([ 
   {id: 1, title: "admin"},
@@ -113,8 +84,39 @@ puts Permission.all.map(&:title)
 
 User.delete_all
 User.create([ 
-  {email: "admin", password: "admin", password_confirmation: "admin", permission_id: 1},
-  {email: "manager", password: "manager", password_confirmation: "manager", permission_id: 2}
+  {id: 1, email: "admin", password: "admin", password_confirmation: "admin", permission_id: 1},
+  {id: 2, email: "manager", password: "manager", password_confirmation: "manager", permission_id: 2}
 ])
 puts "Стандартные аккаунты:"
 puts User.all.map(&:email)
+
+# Тестирование нагрузки
+Order.delete_all
+Order.reset_primary_key
+puts "Заказы для тестирования нагрузки:"
+1000.times do |i|
+  print '#' if (i % 10 == 0)
+  Order.create(
+    type_of_certificate_id: 1 + rand(8), 
+    type_of_legal_entity_id: 1 + rand(5), 
+    status_id: 1 + rand(4), 
+    company: "Булыжник сервис", 
+    creator_name: "Булыжников Юрий Андропович", 
+    registered_address: "123456, Лондон, Пикадили 13", 
+    actual_address: "123456, Лондон, Пикадили 13", 
+    address_on_english: "123456, Landon, Pekkodilli 13", 
+    phone: "1234567",
+    fax: "1234567",
+    email: "ya@ya.ru", 
+    inn: "123456789", 
+    kpp: "123456656", 
+    ogrn: "254354235432", 
+    bank: "Крупный", 
+    current_account: "253545432534542353542657887", 
+    correspondent_account: "31819875847591798579875984", 
+    bik: "1347465788657842", 
+    bank_person: "Евгений Михалыч Забоблоев", 
+    auditors_names: "Петр Семёновыч Карабелов, Иван Сергеич Подводников, Михаил Михайлович Лодка"
+  )
+end
+puts "Тысяча заказов загружена!"
