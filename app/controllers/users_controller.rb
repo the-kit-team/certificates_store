@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :authorize, only: [:new, :create]
-  before_action :check_pemissions, only: [:show, :edit, :update, :destroy]
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, :admin_permission, only: [:show, :edit, :update, :destroy]
 
   # GET /users
   # GET /users.json
@@ -73,9 +72,5 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:email, :password, :password_confirmation, :permission_id)
-    end
-    
-    def check_pemissions
-      redirect_to home_path if not permission == 'admin'
     end
 end

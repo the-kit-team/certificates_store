@@ -2,8 +2,7 @@ class OrdersController < ApplicationController
   include ApplicationHelper
     
   skip_before_action :authorize, only: [:new, :create]
-  before_action :check_pemissions, only: [:show, :edit, :update, :destroy]
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :set_order, :admin_permission, only: [:show, :edit, :update, :destroy]
 
   # GET /orders
   # GET /orders.json
@@ -30,7 +29,7 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
     @order = Order.new(order_params)
-    @order.status_id = Status.find_by_title("Новый").id
+    @order.status_id = 1 # new
 
     respond_to do |format|
       if @order.save
@@ -77,8 +76,4 @@ class OrdersController < ApplicationController
     def order_params
       params.require(:order).permit(:type_of_certificate_id, :type_of_legal_entity_id, :company, :creator_name, :registered_address, :actual_address, :address_on_english, :phone, :fax, :email, :inn, :kpp, :ogrn, :bank, :current_account, :correspondent_account, :bik, :bank_person, :auditors_names, :status_id, :list_of_works_category_ids => [])
     end
-    
-    def check_pemissions
-      redirect_to home_path if not (permission == 'admin' or permission == 'manager')
-    end 
 end

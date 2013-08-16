@@ -30,5 +30,12 @@ class ApplicationController < ActionController::Base
         redirect_to login_url, notice: "Please log in"
       end
     end
-
+    
+    def admin_permission
+      redirect_to home_path if not current_user.admin?
+    end
+    
+    def manager_permission
+      redirect_to home_path if not current_user.manager?
+    end
 end

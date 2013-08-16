@@ -1,7 +1,7 @@
 class ManagerController < ApplicationController
   include ApplicationHelper
   
-  before_action :check_pemissions
+  before_action :admin_permission, :manager_permission
   
   # GET /manager
   # GET /manager?status=1
@@ -34,9 +34,5 @@ class ManagerController < ApplicationController
   
     def manager_params
       params.require(:manager).permit(:word)
-    end
-    
-    def check_pemissions
-      redirect_to home_path if not (permission == 'admin' or permission == 'manager')
     end
 end
