@@ -1,9 +1,9 @@
-Prawn::Document.new( opts={} ) do |pdf|
+Prawn::Document.new( arguments={} ) do |pdf|
   pdf.font_families.update(
     "Verdana" => {
       bold: "lib/fonts/verdanab.ttf",
       italic: "lib/fonts/verdanai.ttf",
-      normal: "lib/fonts/verdana.ttf" 
+      normal: "lib/fonts/verdana.ttf"
     })
   pdf.font "Verdana"
   
