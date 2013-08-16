@@ -1,4 +1,5 @@
 module ApplicationHelper
+<<<<<<< HEAD
   @current_user
   @last_user_id
   
@@ -11,5 +12,13 @@ module ApplicationHelper
       @last_user_id = session[:user_id]
       @current_user = User.find(session[:user_id]).permission.title
     end
+=======
+  def permission
+    Permission.find_by_id(current_user.permission_id).title rescue false
+  end
+
+  def current_user
+    User.find_by_id(session[:user_id])
+>>>>>>> fa6586db17ca8a7adebc1e5247d72a27d93ca57f
   end
 end

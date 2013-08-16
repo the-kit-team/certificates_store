@@ -25,12 +25,29 @@
   <div id="columns">
     <div id="side"> 
       <ul>
+<<<<<<< HEAD
         <%= content_tag(:li, link_to(t('.home_page'),           home_path, id: ("current_page" if controller.controller_name == 'home'))) %>
         <%= content_tag(:li, link_to(t('.my_orders_page'), my_orders_path, id: ("current_page" if controller.controller_name == 'my_orders'))) if user_is 'client' %>
         <%= content_tag(:li, link_to(t('.admin_page'),         admin_path, id: ("current_page" if controller.controller_name == 'admin')))     if user_is 'admin' %>
         <%= content_tag(:li, link_to(t('.orders_page'),       orders_path, id: ("current_page" if controller.controller_name == 'orders')))    if user_is 'admin' %>
         <%= content_tag(:li, link_to(t('.users_page'),         users_path, id: ("current_page" if controller.controller_name == 'users')))     if user_is 'admin' %>
         <%= content_tag(:li, link_to(t('.manager_page'),     manager_path, id: ("current_page" if controller.controller_name == 'manager')))   if user_is %w(manager admin) %>
+=======
+        <%= content_tag(:li, link_to(t('.home_page'), home_path, id: ("current_page" if controller.controller_name == 'home'))) %>
+	<% if current_user %>
+	  <% if current_user.client? %>
+	    <%= content_tag(:li, link_to(t('.my_orders_page'), my_orders_path, id: ("current_page" if controller.controller_name == 'my_orders'))) %>
+	  <% end %>
+	  <% if current_user.admin? %>
+	    <%= content_tag(:li, link_to(t('.admin_page'), admin_path, id: ("current_page" if controller.controller_name == 'admin'))) %>
+	    <%= content_tag(:li, link_to(t('.orders_page'), orders_path, id: ("current_page" if controller.controller_name == 'orders'))) %>
+	    <%= content_tag(:li, link_to(t('.users_page'), users_path, id: ("current_page" if controller.controller_name == 'users'))) %>
+	  <% end %>
+	  <% if current_user.manager? or current_user.admin? %>
+	    <%= content_tag(:li, link_to(t('.manager_page'),     manager_path, id: ("current_page" if controller.controller_name == 'manager'))) %>
+	  <% end %>
+	<% end %>
+>>>>>>> fa6586db17ca8a7adebc1e5247d72a27d93ca57f
       </ul>
     </div>
     <div id="main"> 
