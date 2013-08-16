@@ -6,16 +6,19 @@ class ManagerController < ApplicationController
   # GET /manager
   # GET /manager?status=1
   def index
-    if params[:status]
-      @orders = Order.where(status_id: params[:status])
+    if params[:status_filter]
+      @orders = Order.where(status_id: params[:status_filter]).reverse
+      @cache_key = "#{params[:status_filter]}"
     else
-      @orders = Order.all
+      @orders = Order.all.reverse
+      @cache_key = 'all'
     end
+    @order_latest = @orders.sort_by(&:updated_at).last
   end
   
   # GET /find?word=searhing_word
   def find
-    @orders = Order.all
+    @orders = Order.all.reverse
     @orders = @orders.select { |e| e.company      =~ /#{params[:word]}/ } |
               @orders.select { |e| e.phone        =~ /#{params[:word]}/ } |
               @orders.select { |e| e.fax          =~ /#{params[:word]}/ } |
