@@ -2,6 +2,9 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 ru:
+  time:
+    formats:
+      default: '%d.%m.%Y %H:%m'
   show: Показать
   edit: Отредактировать
   back: Вернуться
@@ -9,20 +12,42 @@ ru:
   new_order: Новый заказ
   are_you_sure_to_destroy: Вы уверены что хотите удалить
   print_certificate: Распечатать сертификат
-  home_html: "
-    <h1>Добро пожаловать на сайт!</h1>
-    <p>Наш сайт готов предоставить услуги по оформлению сертификатов.</p>
-  "
+  home:
+    index:
+      home_html: "
+        <h1>Добро пожаловать на сайт!</h1>
+        <p>Наш сайт готов предоставить услуги по оформлению сертификатов.</p>
+      "
+      create_order: Оформить заказ
+  manager:
+    index:
+      all: Все
+      newest: Новые
+      inwork: Принятые
+      isdone: Выполненые
+      canceled: Отменённые
+  admin:
+    index:
+      hello_administrator: Привет администратор
+  users:
+    index:
+      listing_users: Пользователи
   layouts:
     application:
       title: Сертификаты
       home_page: Домашняя страница
       orders_page: Заказы
+      admin_page: Администрирование
+      manager_page: Страничка медеджера
+      users_page: Пользователи
+      my_orders_page: Мои заказы
       сopyright: © 2013 Петров Владислав
   activerecord:  
     models:
       order: Заказ
       orders: Заказы
+      user: Пользователь
+      users: Пользователи
     attributes:
       order:
         type_of_certificate: Тип сертификата
@@ -45,6 +70,14 @@ ru:
         bank_person: Имя вкладчика
         auditors_names: Имя(на) аудитора(ов)(ФИО)
         list_of_works_category: Разделы перечня работ
+        created_at: Создан
+        updated_at: Обновлён
+      user:
+        email: Электропочта
+        password: Пароль
+        password_confirmation: Подтверждение пароля
+        permission: Разрешение
+        password_digest: Закадированый пароль
   errors: &errors
     format: ! '%{attribute} %{message}'
     messages:

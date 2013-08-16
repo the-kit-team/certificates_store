@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authorize, only: [:new, :create]
+  before_action :set_order, :admin_permission, only: [:show, :edit, :update, :destroy]
 
   # GET /orders
   # GET /orders.json
@@ -26,11 +27,11 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
     @order = Order.new(order_params)
-    @order.status_id = Status.find_by_title("Новый").id
+    @order.status_id = 1 # new
 
     respond_to do |format|
       if @order.save
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
+        format.html { redirect_to home_path, notice: 'Order was successfully created.' }
         format.json { render action: 'show', status: :created, location: @order }
       else
         format.html { render action: 'new' }
@@ -44,7 +45,7 @@ class OrdersController < ApplicationController
   def update
     respond_to do |format|
       if @order.update(order_params)
-        format.html { redirect_to @order, notice: 'Order was successfully updated.' }
+        format.html { redirect_to home_path, notice: 'Order was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -58,7 +59,7 @@ class OrdersController < ApplicationController
   def destroy
     @order.destroy
     respond_to do |format|
-      format.html { redirect_to orders_url }
+      format.html { redirect_to  :back }
       format.json { head :no_content }
     end
   end
@@ -71,6 +72,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:type_of_certificate_id, :type_of_legal_entity_id, :company, :creator_name, :registered_address, :actual_address, :address_on_english, :phone, :fax, :email, :inn, :kpp, :ogrn, :bank, :current_account, :correspondent_account, :bik, :bank_person, :auditors_names, :list_of_works_category_ids => [])
+      params.require(:order).permit(:type_of_certificate_id, :type_of_legal_entity_id, :company, :creator_name, :registered_address, :actual_address, :address_on_english, :phone, :fax, :email, :inn, :kpp, :ogrn, :bank, :current_account, :correspondent_account, :bik, :bank_person, :auditors_names, :status_id, :list_of_works_category_ids => [])
     end
 end

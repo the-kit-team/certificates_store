@@ -12,14 +12,32 @@
     <%= @page_title || t('.title') %>
     <div id="language">
       <%= link_to('english', url_for(locale: 'en')) %> |
-      <%= link_to('russian', url_for(locale: 'ru')) %>
+      <%= link_to('russian', url_for(locale: 'ru')) %><br/>
+      <% if session[:user_email] %>
+        <%= "Hello #{session[:user_email]}" %>
+        <%= link_to t('logout'), logout_url, method: :delete %>
+      <% else %>
+        <%= link_to t('login'), login_path %>
+      <% end %>
     </div>
   </div>
   <div id="columns">
     <div id="side"> 
       <ul>
-        <%= content_tag(:li, link_to(t('.home_page'), home_path, :id => ("current_page" if controller.controller_name == 'home') ) ) %>
-        <%= content_tag(:li, link_to(t('.orders_page'), orders_path, :id => ("current_page" if controller.controller_name == 'orders') ) ) %>
+        <li><%= link_to_unless_current t('.home_page'), home_path %></li>
+        <% if current_user %>
+          <% if current_user.client? %>
+            <li><%= link_to_unless_current t('.my_orders_page'), my_orders_path %></li>
+          <% end %>
+          <% if current_user.admin? %>
+            <li><%= link_to_unless_current t('.admin_page'),  admin_path %></li>
+            <li><%= link_to_unless_current t('.orders_page'), orders_path %></li>
+            <li><%= link_to_unless_current t('.users_page'),  users_path %></li>
+          <% end %>
+          <% if current_user.manager? or current_user.admin? %>
+            <li><%= link_to_unless_current t('.manager_page'), manager_path %></li>
+          <% end %>
+        <% end %>
       </ul>
     </div>
     <div id="main"> 

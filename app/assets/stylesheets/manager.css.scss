@@ -1,0 +1,74 @@
+// Place all the styles related to the Manager controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#ordersfilter {
+  width: 100%;
+  ul {
+    padding: 0;
+    margin: 0;
+    li {
+      margin: 0px -1px;
+      align: center;
+      display: inline;
+      list-style: none;
+      font: small-caps 20px/20px "Times New Roman", serif;
+      a {
+        padding: 0px 25px;
+        color: black;
+        text-decoration: none;
+        position: relative;
+        &#canceled { color: white; background: black;  &:hover { color: black; background: white; } }
+        &#all      { background: #0c0; &:hover { background: #ffe; } }
+        &#new      { background: #f66; &:hover { background: #ffe; } }
+        &#inwork   { background: #9cf; &:hover { background: #ffe; } }
+        &#isdone   { background: #4e4; &:hover { background: #ffe; } }
+        // Arrow
+        &:before {
+          content: " ";
+          left: 0%;
+          border: solid transparent;
+          position: absolute;
+          border-left-color: #ffe;
+          border-width: 25px;
+          border-bottom-width: 0px;
+          top: 100%;
+          margin-top: -25px;
+        }
+        &:after {
+          content: " ";
+          right: 0%;
+          border: solid transparent;
+          position: absolute;
+          border-right-color: #ffe;
+          border-width: 22px;
+          border-top-width: 0px;
+          top: 100%;
+          margin-top: -22px;
+        }
+      }
+    }
+  }
+}
+
+.list {
+  border-collapse:collapse;
+  tr {
+    height: 35px;
+    th { 
+      background: #fff;
+      border-top: 1px solid black;
+    }
+    #id { padding-left: 10px; width: 80px; }
+    #actions {
+      width: 30%;
+      text-align: right;
+      padding-right: 10px;
+      a { color: white; &:hover { color: black; background: #fff; } }
+    }
+    &#status1 { background: #f66; } // new
+    &#status2 { background: #9cf; } // in work
+    &#status3 { background: #4e4; } // is done
+    &#status4 { color: white; background: black; } // canceled
+  }
+}
