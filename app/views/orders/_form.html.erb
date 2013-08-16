@@ -91,7 +91,7 @@
     <%= f.label :list_of_works_category %><br/>
     <%= f.collection_select :list_of_works_category_ids, ListOfWorksCategory.all, :id, :title, {include_blank: false}, multiple: true %>
   </div>
-  <% if permission == 'manager' %>
+  <% if user_is 'manager' %>
     <div class="field">
       <%= f.label :status %><br/>
       <%= f.collection_select :status_id, Status.all, :id, :title %>
