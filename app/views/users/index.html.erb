@@ -1,0 +1,33 @@
+<h1><%= t('.listing_users') %></h1>
+  <% if notice %>
+    <p id="notice"><%= notice %></p> 
+  <% end %>
+<table>
+  <thead>
+    <tr>
+      <th><%= t :email, scope: 'activerecord.attributes.user' %></th>
+      <th><%= t :password_digest, scope: 'activerecord.attributes.user' %></th>
+      <th><%= t :permission, scope: 'activerecord.attributes.user' %></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.email %></td>
+        <td><%= user.password_digest %></td>
+        <td><%= Permission.find_by_id(user.permission_id).title.to_s %></td>
+        <td><%= link_to 'Show', user %></td>
+        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User', new_user_path %>
