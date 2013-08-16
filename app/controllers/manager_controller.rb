@@ -1,6 +1,4 @@
 class ManagerController < ApplicationController
-  include ApplicationHelper
-  
   before_action :admin_permission, :manager_permission
   
   # GET /manager

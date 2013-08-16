@@ -32,10 +32,10 @@ class ApplicationController < ActionController::Base
     end
     
     def admin_permission
-      redirect_to home_path if not current_user.admin?
+      redirect_to home_path if not current_user_admin?
     end
     
     def manager_permission
-      redirect_to home_path if not current_user.manager?
+      redirect_to home_path if not current_user_manager?
     end
 end

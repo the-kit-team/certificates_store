@@ -1,6 +1,4 @@
 class OrdersController < ApplicationController
-  include ApplicationHelper
-    
   skip_before_action :authorize, only: [:new, :create]
   before_action :set_order, :admin_permission, only: [:show, :edit, :update, :destroy]
 
