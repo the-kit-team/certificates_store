@@ -29,7 +29,8 @@ class OrdersControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should get edit" do
+  test "should get edit when logged in as manager" do
+    login_as :manager
     get :edit, id: @order
     assert_response :success
   end
