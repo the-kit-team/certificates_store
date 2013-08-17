@@ -1,6 +1,4 @@
 class ApplicationController < ActionController::Base
-  include ApplicationHelper
-
   before_action :set_i18n_locale_from_params
   before_action :authorize
   
