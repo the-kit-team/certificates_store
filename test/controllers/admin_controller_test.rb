@@ -6,4 +6,10 @@ class AdminControllerTest < ActionController::TestCase
     assert_redirected_to login_url
   end
 
+  test "should get index if logged in as admin" do
+    login_as(:admin)
+
+    get :index
+    assert_response :success
+  end
 end
