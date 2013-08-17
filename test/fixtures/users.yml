@@ -15,3 +15,7 @@ admin:
 manager:
   email: manager
   permission: manager
+
+client:
+  email: client
+  permission: client

@@ -5,3 +5,6 @@ admin:
 
 manager:
   title: manager
+
+client:
+  title: client
