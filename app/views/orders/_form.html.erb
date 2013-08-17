@@ -91,11 +91,13 @@
     <%= f.label :list_of_works_category %><br/>
     <%= f.collection_select :list_of_works_category_ids, ListOfWorksCategory.all, :id, :title, {include_blank: false}, multiple: true %>
   </div>
-  <% if current_user.manager? or current_user.admin? %>
-    <div class="field">
-      <%= f.label :status %><br/>
-      <%= f.collection_select :status_id, Status.all, :id, :title %>
-    </div>
+  <% if current_user %>
+    <% if current_user.manager? or current_user.admin? %>
+      <div class="field">
+        <%= f.label :status %><br/>
+        <%= f.collection_select :status_id, Status.all, :id, :title %>
+      </div>
+    <% end %>
   <% end %>
   <div class="actions">
     <%= f.submit %>

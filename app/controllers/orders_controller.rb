@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   skip_before_action :authorize, only: [:new, :create]
-  before_action { redirect_to home_path if not current_user.admin? }
+  before_action :check_user_is_manager_or_admin, only: [:show, :edit, :update]
+  before_action :check_user_is_admin, only: [:destroy]
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   # GET /orders
@@ -74,5 +75,13 @@ class OrdersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
       params.require(:order).permit(:type_of_certificate_id, :type_of_legal_entity_id, :company, :creator_name, :registered_address, :actual_address, :address_on_english, :phone, :fax, :email, :inn, :kpp, :ogrn, :bank, :current_account, :correspondent_account, :bik, :bank_person, :auditors_names, :status_id, :list_of_works_category_ids => [])
+    end
+    
+    def check_user_is_admin
+      redirect_to home_path if not current_user.admin?
+    end
+    
+    def check_user_is_manager_or_admin
+      redirect_to home_path if not (current_user.manager? or current_user.admin?)
     end
 end
