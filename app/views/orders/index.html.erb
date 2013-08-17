@@ -91,6 +91,10 @@
           <%= link_to t('destroy'), order, method: :delete, data: { confirm: t('are_you_sure_to_destroy')+'?' } %>
         </td>
       </tr>
+    <% cache ["orders", Order.latest] do %>
+        <% cache ['entry', order] do %>
+        <% end %>
+      <% end %>
     <% end %>
   </tbody>
 </table>
