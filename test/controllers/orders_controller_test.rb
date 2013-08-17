@@ -39,11 +39,12 @@ class OrdersControllerTest < ActionController::TestCase
     assert_redirected_to order_path(assigns(:order))
   end
 
-  test "should destroy order" do
+  test "should destroy order if logged in as admin" do
+    login_as :admin
     assert_difference('Order.count', -1) do
       delete :destroy, id: @order
     end
 
-    assert_redirected_to orders_path
+    assert_redirected_to orders_url
   end
 end
