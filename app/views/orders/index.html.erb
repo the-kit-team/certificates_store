@@ -2,97 +2,63 @@
 
 <table class="list">
   <tbody>
-    <% @orders.each do |order| %>
-      <tr>
-        <th><%= t :type_of_certificate, scope: 'activerecord.attributes.order' %></th>
-        <td><%= TypeOfCertificate.find(order.type_of_certificate_id).title %></td>
-      </tr>
-      <tr>
-        <th><%= t :type_of_legal_entity, scope: 'activerecord.attributes.order' %></th>
-        <td><%= TypeOfLegalEntity.find(order.type_of_legal_entity_id).title %></td>
-      </tr>
-      <tr>
-        <th><%= t :company, scope: 'activerecord.attributes.order' %></th>
-        <td><%= order.company %></td>
-      </tr>
-      <tr>
-        <th><%= t :creator_name, scope: 'activerecord.attributes.order' %></th>
-        <td><%= order.creator_name %></td>
-      </tr>
-      <tr>
-        <th><%= t :registered_address, scope: 'activerecord.attributes.order' %></th>
-        <td><%= order.registered_address %></td>
-      </tr>
-      <tr>
-        <th><%= t :actual_address, scope: 'activerecord.attributes.order' %></th>
-        <td><%= order.actual_address %></td>
-      </tr>
-      <tr>
-        <th><%= t :address_on_english, scope: 'activerecord.attributes.order' %></th>
-        <td><%= order.address_on_english %></td>
-      </tr>
-      <tr>
-        <th><%= t :phone, scope: 'activerecord.attributes.order' %></th>
-        <td><%= order.phone %></td>
-      </tr>
-      <tr>
-        <th><%= t :fax, scope: 'activerecord.attributes.order' %></th>
-        <td><%= order.fax %></td>
-      </tr>
-      <tr>
-        <th><%= t :email, scope: 'activerecord.attributes.order' %></th>
-        <td><%= order.email %></td>
-      </tr>
-      <tr>
-        <th><%= t :inn, scope: 'activerecord.attributes.order' %></th>
-        <td><%= order.inn %></td>
-      </tr>
-      <tr>
-        <th><%= t :kpp, scope: 'activerecord.attributes.order' %></th>
-        <td><%= order.kpp %></td>
-      </tr>
-      <tr>
-        <th><%= t :ogrn, scope: 'activerecord.attributes.order' %></th>
-        <td><%= order.ogrn %></td>
-      </tr>
-      <tr>
-        <th><%= t :bank, scope: 'activerecord.attributes.order' %></th>
-        <td><%= order.bank %></td>
-      </tr>
-      <tr>
-        <th><%= t :current_account, scope: 'activerecord.attributes.order' %></th>
-        <td><%= order.current_account %></td>
-      </tr>
-      <tr>
-        <th><%= t :correspondent_account, scope: 'activerecord.attributes.order' %></th>
-        <td><%= order.correspondent_account %></td>
-      </tr>
-      <tr>
-        <th><%= t :bik, scope: 'activerecord.attributes.order' %></th>
-        <td><%= order.bik %></td>
-      </tr>
-      <tr>
-        <th><%= t :bank_person, scope: 'activerecord.attributes.order' %></th>
-        <td><%= order.bank_person %></td>
-      </tr>
-      <tr>
-        <th><%= t :auditors_names, scope: 'activerecord.attributes.order' %></th>
-        <td><%= order.auditors_names %></td>
-      </tr>
-      <tr>
-        <th><%= t :list_of_works_category, scope: 'activerecord.attributes.order' %></th>
-        <td><%= order.list_of_works_categories.map(&:title).join("/") %></td>
-      </tr>
-      <tr>
-        <th></th>
-        <td>
-          <%= link_to t('show'), order %> |
-          <%= link_to t('edit'), edit_order_path(order) %> |
-          <%= link_to t('destroy'), order, method: :delete, data: { confirm: t('are_you_sure_to_destroy')+'?' } %>
-        </td>
-      </tr>
+    <tr>
+      <th><%= t :id,                     scope: 'activerecord.attributes.order' %></th>
+      <th><%= t :created_at,             scope: 'activerecord.attributes.order' %></th>
+      <th><%= t :updated_at,             scope: 'activerecord.attributes.order' %></th>
+      <th><%= t :company,                scope: 'activerecord.attributes.order' %></th>
+      <th><%= t :creator_name,           scope: 'activerecord.attributes.order' %></th>
+      <th><%= t :phone,                  scope: 'activerecord.attributes.order' %></th>
+      <th><%= t :list_of_works_category, scope: 'activerecord.attributes.order' %></th>
+      <th><%= t :auditors_names,         scope: 'activerecord.attributes.order' %></th>
+      <th><%= t :bank_person,            scope: 'activerecord.attributes.order' %></th>
+      <th><%= t :bik,                    scope: 'activerecord.attributes.order' %></th>
+      <th><%= t :correspondent_account,  scope: 'activerecord.attributes.order' %></th>
+      <th><%= t :current_account,        scope: 'activerecord.attributes.order' %></th>
+      <th><%= t :bank,                   scope: 'activerecord.attributes.order' %></th>
+      <th><%= t :ogrn,                   scope: 'activerecord.attributes.order' %></th>
+      <th><%= t :kpp,                    scope: 'activerecord.attributes.order' %></th>
+      <th><%= t :inn,                    scope: 'activerecord.attributes.order' %></th>
+      <th><%= t :email,                  scope: 'activerecord.attributes.order' %></th>
+      <th><%= t :fax,                    scope: 'activerecord.attributes.order' %></th>
+      <th><%= t :address_on_english,     scope: 'activerecord.attributes.order' %></th>
+      <th><%= t :actual_address,         scope: 'activerecord.attributes.order' %></th>
+      <th><%= t :registered_address,     scope: 'activerecord.attributes.order' %></th>
+      <th><%= t :type_of_certificate,    scope: 'activerecord.attributes.order' %></th>
+      <th></th>
+    </tr>
     <% cache ["orders", Order.latest] do %>
+      <% @orders.each do |order| %>
         <% cache ['entry', order] do %>
+          <tr>
+            <td><%= order.id %></td>
+            <td><%= l order.created_at %></td>
+            <td><%= l order.updated_at %></td>
+            <td><%= "#{TypeOfLegalEntity.find(order.type_of_legal_entity_id).title} #{order.company}" %></td>
+            <td><%= get_lastname_and_abbreviation order.creator_name  %></td>
+            <td><%= order.phone %></td>
+            <td><%= order.list_of_works_categories.map(&:title).join("/") %></td>
+            <td><%= order.auditors_names %></td>
+            <td><%= order.bank_person %></td>
+            <td><%= order.bik %></td>
+            <td><%= order.correspondent_account %></td>
+            <td><%= order.current_account %></td>
+            <td><%= order.bank %></td>
+            <td><%= order.ogrn %></td>
+            <td><%= order.kpp %></td>
+            <td><%= order.inn %></td>
+            <td><%= order.email %></td>
+            <td><%= order.fax %></td>
+            <td><%= order.address_on_english %></td>
+            <td><%= order.actual_address %></td>
+            <td><%= order.registered_address %></td>
+            <td><%= TypeOfCertificate.find(order.type_of_certificate_id).title %></td>
+            <td id="actions">
+              <%= link_to t('show'), order %> |
+              <%= link_to t('edit'), edit_order_path(order) %> |
+              <%= link_to t('destroy'), order, method: :delete, data: { confirm: t('are_you_sure_to_destroy')+'?' } %>
+            </td>
+          </tr>
         <% end %>
       <% end %>
     <% end %>
