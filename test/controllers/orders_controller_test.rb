@@ -21,7 +21,7 @@ class OrdersControllerTest < ActionController::TestCase
       post :create, order: { actual_address: @order.actual_address, address_on_english: @order.address_on_english, auditors_names: @order.auditors_names, bank: @order.bank, bank_person: @order.bank_person, bik: @order.bik, company: @order.company, correspondent_account: @order.correspondent_account, creator_name: @order.creator_name, current_account: @order.current_account, email: @order.email, fax: @order.fax, inn: @order.inn, kpp: @order.kpp, ogrn: @order.ogrn, phone: @order.phone, registered_address: @order.registered_address }
     end
 
-    assert_redirected_to order_path(assigns(:order))
+    assert_redirected_to home_path
   end
 
   test "should show order" do
