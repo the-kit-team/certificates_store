@@ -38,7 +38,7 @@ ru:
       home_page: Домашняя страница
       orders_page: Заказы
       admin_page: Администрирование
-      manager_page: Страничка медеджера
+      manager_page: Страничка менеджера
       users_page: Пользователи
       my_orders_page: Мои заказы
       сopyright: © 2013 Петров Владислав
@@ -77,7 +77,7 @@ ru:
         password: Пароль
         password_confirmation: Подтверждение пароля
         permission: Разрешение
-        password_digest: Закадированый пароль
+        password_digest: Зашифрованный пароль
   errors: &errors
     format: ! '%{attribute} %{message}'
     messages:
