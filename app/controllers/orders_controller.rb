@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   skip_before_action :authorize, only: [:new, :create]
-  before_action :check_user_is_manager_or_admin, only: [:show, :edit, :update]
+  before_action :check_user_is_manager_or_admin, only: [:index, :show, :edit, :update]
   before_action :check_user_is_admin, only: [:destroy]
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 

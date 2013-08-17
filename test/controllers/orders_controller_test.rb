@@ -5,7 +5,8 @@ class OrdersControllerTest < ActionController::TestCase
     @order = orders(:one)
   end
 
-  test "should get index" do
+  test "should get index when logged in as manager" do
+    login_as :manager
     get :index
     assert_response :success
     assert_not_nil assigns(:orders)
