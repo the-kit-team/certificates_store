@@ -23,11 +23,13 @@
     <%= f.label :password_confirmation %><br>
     <%= f.password_field :password_confirmation %>
   </div>
-  <% if permission == "admin" %>
-    <div>
-      <%= f.label :permission %><br>
-      <%= f.collection_select :permission_id, Permission.all, :id, :title %>
-    </div>
+  <% if current_user %>
+    <% if current_user.admin? %>
+      <div>
+        <%= f.label :permission %><br>
+        <%= f.collection_select :permission_id, Permission.all, :id, :title %>
+      </div>
+    <% end %>
   <% end %>
   <div class="actions">
     <%= f.submit %>
