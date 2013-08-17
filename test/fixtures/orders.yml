@@ -1,6 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
+  type_of_legal_entity: one
   company: MyString
   creator_name: MyString
   registered_address: MyString
@@ -20,6 +21,7 @@ one:
   auditors_names: MyString
 
 two:
+  type_of_legal_entity: two
   company: MyString
   creator_name: MyString
   registered_address: MyString

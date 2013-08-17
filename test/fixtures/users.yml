@@ -11,3 +11,7 @@ two:
 admin:
   email: admin
   permission: admin
+
+manager:
+  email: manager
+  permission: manager
