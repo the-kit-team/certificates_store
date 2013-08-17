@@ -1,9 +1,6 @@
 class ApplicationController < ActionController::Base
   include ApplicationHelper
-<<<<<<< HEAD
-
-=======
->>>>>>> 23dc0d6255f5e8735d6110e9559808d4187f9c80
+  
   before_action :set_i18n_locale_from_params
   before_action :authorize
   
