@@ -1,6 +1,6 @@
 <div class="depot_form"> 
-  <% if flash[:alert] %>
-    <p id="notice"><%= flash[:alert] %></p> 
+  <% if notice %>
+    <p id="notice"><%= notice %></p> 
   <% end %>
   <%= form_tag do %>
     <fieldset>
