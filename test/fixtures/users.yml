@@ -10,12 +10,12 @@ two:
 
 admin:
   email: admin
-  permission_id: 1 # admin
+  permission: admin
 
 manager:
   email: manager
-  permission_id: 2 # manager
+  permission: manager
 
 client:
   email: client
-  permission_id: 3 # client
+  permission: client
