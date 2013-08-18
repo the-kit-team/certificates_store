@@ -22,6 +22,7 @@ one:
   auditors_names: MyString
 
 two:
+  type_of_certificate: two
   type_of_legal_entity: two
   company: MyString
   creator_name: MyString
