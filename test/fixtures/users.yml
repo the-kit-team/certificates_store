@@ -2,20 +2,25 @@
 
 one:
   email: MyString
-  password_digest: MyString
+  password_digest: <%= BCrypt::Password.create('password') %>
+  permission: client
 
 two:
   email: MyString
-  password_digest: MyString
+  password_digest: <%= BCrypt::Password.create('password') %>
+  permission: client
 
 admin:
   email: admin
+  password_digest: <%= BCrypt::Password.create('admin') %>
   permission: admin
 
 manager:
   email: manager
+  password_digest: <%= BCrypt::Password.create('manager') %>
   permission: manager
 
 client:
   email: client
+  password_digest: <%= BCrypt::Password.create('client') %>
   permission: client

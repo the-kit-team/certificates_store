@@ -5,7 +5,9 @@ class UsersControllerTest < ActionController::TestCase
     @user = users(:one)
   end
 
-  test "should get index" do
+  test "should get index when logged in as admin" do
+    login_as :admin
+
     get :index
     assert_response :success
     assert_not_nil assigns(:users)
@@ -18,32 +20,40 @@ class UsersControllerTest < ActionController::TestCase
 
   test "should create user" do
     assert_difference('User.count') do
-      post :create, user: { email: @user.email, password_digest: @user.password_digest }
+      post :create, user: { email: 'unique_email', password: 'qwerty', password_confirmation: 'qwerty' }
     end
 
-    assert_redirected_to user_path(assigns(:user))
+    assert_redirected_to users_path
   end
 
-  test "should show user" do
+  test "should show user when logged in as admin" do
+    login_as :admin
+
     get :show, id: @user
     assert_response :success
   end
 
-  test "should get edit" do
+  test "should get edit when logged in as admin" do
+    login_as :admin
+
     get :edit, id: @user
     assert_response :success
   end
 
-  test "should update user" do
-    patch :update, id: @user, user: { email: @user.email, password_digest: @user.password_digest }
-    assert_redirected_to user_path(assigns(:user))
+  test "should update user when logged in as admin" do
+    login_as :admin
+
+    patch :update, id: @user, user: { email: 'unique_email' }
+    assert_redirected_to users_path
   end
 
-  test "should destroy user" do
+  test "should destroy user when logged in as admin" do
+    login_as :admin
+
     assert_difference('User.count', -1) do
       delete :destroy, id: @user
     end
 
-    assert_redirected_to users_path
+    assert_redirected_to users_url
   end
 end
