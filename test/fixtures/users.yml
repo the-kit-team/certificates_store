@@ -1,12 +1,12 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  email: MyString
+  email: user_one
   password_digest: <%= BCrypt::Password.create('password') %>
   permission: client
 
 two:
-  email: MyString
+  email: user_two
   password_digest: <%= BCrypt::Password.create('password') %>
   permission: client
 
