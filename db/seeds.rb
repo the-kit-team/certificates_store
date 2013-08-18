@@ -92,7 +92,6 @@ puts User.all.map(&:email)
 
 # Тестирование нагрузки
 Order.delete_all
-<<<<<<< HEAD
 Order.reset_primary_key
 puts "Заказы для тестирования нагрузки:"
 1000.times do |i|
@@ -120,34 +119,4 @@ puts "Заказы для тестирования нагрузки:"
     auditors_names: "Петр Семёновыч Карабелов, Иван Сергеич Подводников, Михаил Михайлович Лодка"
   )
 end
-puts "Тысяча заказов загружена!"
-=======
-Order.create(
-  id: 1,
-  type_of_certificate_id: TypeOfCertificate.find_by_title("ГОСТ ISO 9001-2011 (ISO 9001:2008)").id, 
-  type_of_legal_entity_id: TypeOfLegalEntity.find_by_title("ОАО").id, 
-  status_id: Status.find_by_title("Новый").id, 
-  company: "Булыжник сервис", 
-  creator_name: "Булыжников Юрий Андропович", 
-  registered_address: "123456, Лондон, Пикадили 13", 
-  actual_address: "123456, Лондон, Пикадили 13", 
-  address_on_english: "123456, Landon, Pekkodilli 13", 
-  phone: "1234567",
-  fax: "1234567",
-  email: "ya@ya.ru", 
-  inn: "123456789", 
-  kpp: "123456656", 
-  ogrn: "254354235432", 
-  bank: "Крупный", 
-  current_account: "253545432534542353542657887", 
-  correspondent_account: "31819875847591798579875984", 
-  bik: "1347465788657842", 
-  bank_person: "Евгений Михалыч Забоблоев", 
-  auditors_names: "Петр Семёновыч Карабелов, Иван Сергеич Подводников, Михаил Михайлович Лодка"
-)
-Order.first.list_of_works_category_ids = ListOfWorksCategory.first.id, ListOfWorksCategory.last.id
-puts "Заказ:"
-Order.all.map do |e| 
-  puts "#{e.company}"
-end
->>>>>>> master
+puts "\nТысяча заказов загружена!"
