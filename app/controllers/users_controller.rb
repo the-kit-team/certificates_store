@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   skip_before_action :authorize, only: [:new, :create]
-  before_action :check_user_is_admin, only: [:index, :show, :edit, :update, :destroy]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
