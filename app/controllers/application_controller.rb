@@ -29,41 +29,41 @@ class ApplicationController < ActionController::Base
       if (current_user.client? rescue false)
         case params[:controller]
           when 'sessions'
-            return # permit
+            # permit
           when 'home'
-            return # permit
+            # permit
           when 'orders'
             case params[:action]
               when 'new', 'create'
-                return # permit
+                # permit
             end
           when 'users'
             case params[:action]
               when 'new', 'create'
-                return # permit
+                # permit
             end
           when 'my_orders'
-            return # permit
+            # permit
           else
             redirect_to home_url
         end
       elsif (current_user.manager? rescue false)
         case params[:controller]
           when 'sessions'
-            return # permit
+            # permit
           when 'home'
-            return # permit
+            # permit
           when 'users'
             case params[:action]
               when 'new', 'create'
-                return # permit
+                # permit
           end
           when 'manager'
-            return # permit
+            # permit
           when 'orders'
             case params[:action]
               when 'new', 'create', 'show', 'edit', 'update'
-                return # permit
+                # permit
               else
                 redirect_to home_url
             end
@@ -80,16 +80,16 @@ class ApplicationController < ActionController::Base
                 # permit
             end
           when 'home'
-            return # permit
+            # permit
           when 'orders'
             case params[:action]
               when :new, :create
-                return # permit
+                # permit
             end
           when 'users'
             case params[:action]
               when :new, :create
-                return # permit
+                # permit
             end
           else
             redirect_to login_url, notice: "Please log in"
