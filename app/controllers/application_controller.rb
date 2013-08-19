@@ -84,6 +84,8 @@ class ApplicationController < ActionController::Base
             case params[:action]
               when 'new', 'create'
                 # permit
+              else
+                redirect_to home_url
             end
           when 'home'
             # permit
