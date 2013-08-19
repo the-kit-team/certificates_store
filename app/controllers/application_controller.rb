@@ -37,32 +37,31 @@ class ApplicationController < ActionController::Base
           redirect_to home_url
         end
       else # not user
-        redirect_to login_url, notice: "Please log in" if not user_workplace
+        redirect_to login_url, notice: "Please log in" if not logout_workplace
       end
     end
     
-    def user_workplace
-      request controller: ['home'] or
-      request controller: ['sessions', 'orders', 'users'], action: ['new', 'create']
+    def logout_workplace
+      request_to controller: ['home'] or
+      request_to controller: ['sessions', 'orders', 'users'], action: ['new', 'create']
     end
     
     def client_workplace
-      request controller: ['sessions', 'home', 'manager'] or
-      request controller: ['users'], action: ['new', 'create'] or 
-      request controller: ['orders'], action: ['new', 'create', 'show', 'edit', 'update']
+      request_to controller: ['sessions', 'home', 'my_orders'] or
+      request_to controller: ['users', 'orders'], action: ['new', 'create']
     end
       
     def manager_workplace
-      request controller: ['sessions', 'home', 'manager'] or
-      request controller: ['users'], action: ['new', 'create'] or
-      request controller: ['orders'], action: ['new', 'create', 'show', 'edit', 'update']
+      request_to controller: ['sessions', 'home', 'manager'] or
+      request_to controller: ['users'], action: ['new', 'create'] or
+      request_to controller: ['orders'], action: ['new', 'create', 'show', 'edit', 'update']
     end
     
     def admin_workplace
       true # all places
     end
     
-    def request args={}
+    def request_to args={}
       if args[:controller].include? params[:controller]
         if args[:action]
           args[:action].include? params[:action]
