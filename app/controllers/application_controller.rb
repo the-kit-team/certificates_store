@@ -28,83 +28,40 @@ class ApplicationController < ActionController::Base
     def authorize
       if (current_user.client? rescue false)
         case params[:controller]
-          when 'sessions'
-            # permit
-          when 'home'
-            # permit
-          when 'my_orders'
-            # permit
-          when 'orders'
+          when 'sessions', 'home', 'my_orders' # permit
+          when 'orders', 'users'
             case params[:action]
-              when 'new', 'create'
-                # permit
-              else
-                redirect_to home_url
+              when 'new', 'create' # permit
+              else redirect_to home_url
             end
-          when 'users'
-            case params[:action]
-              when 'new', 'create'
-                # permit
-              else
-                redirect_to home_url
-            end
-          else
-            redirect_to home_url
+          else redirect_to home_url
         end
       elsif (current_user.manager? rescue false)
         case params[:controller]
-          when 'sessions'
-            # permit
-          when 'home'
-            # permit
+          when 'sessions', 'home', 'manager' # permit
           when 'users'
             case params[:action]
-              when 'new', 'create'
-                # permit
-              else
-                redirect_to home_url
+              when 'new', 'create' # permit
+              else redirect_to home_url
           end
-          when 'manager'
-            # permit
           when 'orders'
             case params[:action]
-              when 'new', 'create', 'show', 'edit', 'update'
-                # permit
-              else
-                redirect_to home_url
+              when 'new', 'create', 'show', 'edit', 'update' # permit
+              else redirect_to home_url
             end
-          else
-            redirect_to home_url
+          else redirect_to home_url
         end
       elsif (current_user.admin? rescue false)
         # all permit
       else # not user
         case params[:controller]
-          when 'sessions'
+          when 'home' # permit
+          when 'sessions', 'orders', 'users'
             case params[:action]
-              when 'new', 'create'
-                # permit
-              else
-                redirect_to home_url
+              when 'new', 'create' # permit
+              else redirect_to home_url
             end
-          when 'home'
-            # permit
-          when 'orders'
-            case params[:action]
-              when 'new', 'create'
-                # permit
-              else
-                redirect_to home_url
-            end
-          when 'users'
-            case params[:action]
-              when 'new', 'create'
-                # permit
-              else
-                redirect_to home_url
-            end
-          else
-            redirect_to login_url, notice: "Please log in"
+          else redirect_to login_url, notice: "Please log in"
         end
       end
     end
