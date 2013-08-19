@@ -32,6 +32,8 @@ class ApplicationController < ActionController::Base
             # permit
           when 'home'
             # permit
+          when 'my_orders'
+            # permit
           when 'orders'
             case params[:action]
               when 'new', 'create'
@@ -46,8 +48,6 @@ class ApplicationController < ActionController::Base
               else
                 redirect_to home_url
             end
-          when 'my_orders'
-            # permit
           else
             redirect_to home_url
         end
