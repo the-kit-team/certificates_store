@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ManagerControllerTest < ActionController::TestCase
   test "should get index if logged in as manager" do
-    login_as(:manager)
+    login_as :manager
 
     get :index
     assert_response :success
@@ -13,8 +13,8 @@ class ManagerControllerTest < ActionController::TestCase
     assert_redirected_to login_url
   end
 
-  test "should get find" do
-    login_as(:manager)
+  test "should get find if logged in as manager" do
+    login_as :manager
 
     get :find, word: 'find_me'
     assert_response :success

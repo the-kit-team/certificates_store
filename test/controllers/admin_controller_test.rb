@@ -7,7 +7,7 @@ class AdminControllerTest < ActionController::TestCase
   end
 
   test "should get index if logged in as admin" do
-    login_as(:admin)
+    login_as :admin
 
     get :index
     assert_response :success
