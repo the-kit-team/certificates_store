@@ -91,14 +91,14 @@ class ApplicationController < ActionController::Base
             # permit
           when 'orders'
             case params[:action]
-              when :new, :create
+              when 'new', 'create'
                 # permit
               else
                 redirect_to home_url
             end
           when 'users'
             case params[:action]
-              when :new, :create
+              when 'new', 'create'
                 # permit
               else
                 redirect_to home_url
