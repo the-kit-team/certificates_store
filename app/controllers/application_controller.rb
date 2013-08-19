@@ -26,43 +26,39 @@ class ApplicationController < ActionController::Base
     end
     
     def authorize
-      if (current_user.client? rescue false)
-        case params[:controller]
-          when 'sessions', 'home', 'my_orders' # permit
-          when 'orders', 'users'
-            case params[:action]
-              when 'new', 'create' # permit
-              else redirect_to home_url
-            end
+      if current_user
+        if current_user.client?
+          if requare controller: ['sessions', 'home', 'my_orders'] # permit
+          elsif requare controller: ['orders', 'users'], action: ['new', 'create'] # permit
           else redirect_to home_url
-        end
-      elsif (current_user.manager? rescue false)
-        case params[:controller]
-          when 'sessions', 'home', 'manager' # permit
-          when 'users'
-            case params[:action]
-              when 'new', 'create' # permit
-              else redirect_to home_url
           end
-          when 'orders'
-            case params[:action]
-              when 'new', 'create', 'show', 'edit', 'update' # permit
-              else redirect_to home_url
-            end
+        elsif current_user.manager?
+          if requare controller: ['sessions', 'home', 'manager'] # permit
+          elsif requare controller: 'users', action: ['new', 'create'] # permit
+          elsif requare controller: 'orders', action: ['new', 'create', 'show', 'edit', 'update'] # permit
           else redirect_to home_url
+          end
+        elsif current_user.admin? # all permit
+        else
+          redirect_to home_url
         end
-      elsif (current_user.admin? rescue false)
-        # all permit
       else # not user
-        case params[:controller]
-          when 'home' # permit
-          when 'sessions', 'orders', 'users'
-            case params[:action]
-              when 'new', 'create' # permit
-              else redirect_to home_url
-            end
-          else redirect_to login_url, notice: "Please log in"
+        if requare controller: ['sessions', 'home'] # permit
+        elsif requare controller: ['orders', 'users'], action: ['new', 'create'] # permit
+        else redirect_to login_url, notice: "Please log in"
         end
+      end
+    end
+    
+    def requare arg={}
+      if arg[:controller].include? params[:controller] 
+        if arg[:action]
+          arg[:action].include? params[:action]
+        else
+          true
+        end
+      else
+        false
       end
     end
 end
