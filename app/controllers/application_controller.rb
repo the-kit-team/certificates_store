@@ -26,26 +26,73 @@ class ApplicationController < ActionController::Base
     end
     
     def authorize
-      if not User.find_by_id(session[:user_id])
-        redirect_to login_url, notice: "Please log in"
-      else
+      if (current_user.client? rescue false)
         case params[:controller]
-        when :admin
-          redirect_to login_url, notice: "You need admin's permission" if not current_user.admin?
-        when :manager
-          redirect_to login_url, notice: "You need admin's or manager's permission" if not (current_user.admin? or current_user.manager?)
-        when :orders
-          case params[:action]
-          when :index, :show, :edit, :update
-            redirect_to login_url, notice: "You need admin's or manager's permission" if not (current_user.admin? or current_user.manager?)
-          when :destroy
-            redirect_to login_url, notice: "You need admin's permission" if not current_user.admin?
+          when 'sessions'
+            return # permit
+          when 'home'
+            return # permit
+          when 'orders'
+            case params[:action]
+              when 'new', 'create'
+                return # permit
+            end
+          when 'users'
+            case params[:action]
+              when 'new', 'create'
+                return # permit
+            end
+          when 'my_orders'
+            return # permit
+          else
+            redirect_to home_url
+        end
+      elsif (current_user.manager? rescue false)
+        case params[:controller]
+          when 'sessions'
+            return # permit
+          when 'home'
+            return # permit
+          when 'users'
+            case params[:action]
+              when 'new', 'create'
+                return # permit
           end
-        when :users
-          case params[:action]
-          when :index, :show, :edit, :update, :destroy
-            redirect_to login_url, notice: "You need admin's permission" if not current_user.admin?
-          end
+          when 'manager'
+            return # permit
+          when 'orders'
+            case params[:action]
+              when 'new', 'create', 'show', 'edit', 'update'
+                return # permit
+              else
+                redirect_to home_url
+            end
+          else
+            redirect_to home_url
+        end
+      elsif (current_user.admin? rescue false)
+        # all permit
+      else # not user
+        case params[:controller]
+          when 'sessions'
+            case params[:action]
+              when 'new', 'create'
+                # permit
+            end
+          when 'home'
+            return # permit
+          when 'orders'
+            case params[:action]
+              when :new, :create
+                return # permit
+            end
+          when 'users'
+            case params[:action]
+              when :new, :create
+                return # permit
+            end
+          else
+            redirect_to login_url, notice: "Please log in"
         end
       end
     end
