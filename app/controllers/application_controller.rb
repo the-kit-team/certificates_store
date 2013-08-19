@@ -28,32 +28,44 @@ class ApplicationController < ActionController::Base
     def authorize
       if current_user
         if current_user.client?
-          if requare controller: ['sessions', 'home', 'my_orders'] # permit
-          elsif requare controller: ['orders', 'users'], action: ['new', 'create'] # permit
-          else redirect_to home_url
-          end
+          redirect_to home_url if not client_workplace
         elsif current_user.manager?
-          if requare controller: ['sessions', 'home', 'manager'] # permit
-          elsif requare controller: 'users', action: ['new', 'create'] # permit
-          elsif requare controller: 'orders', action: ['new', 'create', 'show', 'edit', 'update'] # permit
-          else redirect_to home_url
-          end
-        elsif current_user.admin? # all permit
+          redirect_to home_url if not manager_workplace
+        elsif current_user.admin?
+          redirect_to home_url if not admin_workplace
         else
           redirect_to home_url
         end
       else # not user
-        if requare controller: ['home'] # permit
-        elsif requare controller: ['sessions', 'orders', 'users'], action: ['new', 'create'] # permit
-        else redirect_to login_url, notice: "Please log in"
-        end
+        redirect_to login_url, notice: "Please log in" if not user_workplace
       end
     end
     
-    def requare arg={}
-      if arg[:controller].include? params[:controller] 
-        if arg[:action]
-          arg[:action].include? params[:action]
+    def user_workplace
+      request controller: ['home'] or
+      request controller: ['sessions', 'orders', 'users'], action: ['new', 'create']
+    end
+    
+    def client_workplace
+      request controller: ['sessions', 'home', 'manager'] or
+      request controller: ['users'], action: ['new', 'create'] or 
+      request controller: ['orders'], action: ['new', 'create', 'show', 'edit', 'update']
+    end
+      
+    def manager_workplace
+      request controller: ['sessions', 'home', 'manager'] or
+      request controller: ['users'], action: ['new', 'create'] or
+      request controller: ['orders'], action: ['new', 'create', 'show', 'edit', 'update']
+    end
+    
+    def admin_workplace
+      true # all places
+    end
+    
+    def request args={}
+      if args[:controller].include? params[:controller]
+        if args[:action]
+          args[:action].include? params[:action]
         else
           true
         end
