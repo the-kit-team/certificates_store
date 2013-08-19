@@ -43,8 +43,8 @@ class ApplicationController < ActionController::Base
           redirect_to home_url
         end
       else # not user
-        if requare controller: ['sessions', 'home'] # permit
-        elsif requare controller: ['orders', 'users'], action: ['new', 'create'] # permit
+        if requare controller: ['home'] # permit
+        elsif requare controller: ['sessions', 'orders', 'users'], action: ['new', 'create'] # permit
         else redirect_to login_url, notice: "Please log in"
         end
       end
