@@ -10,8 +10,8 @@ Prawn::Document.new( arguments={} ) do |pdf|
   pdf.image 'lib/certificate_backgrounds/obrazec_big.jpg', at: [-36,755], width: 620, height: 795
   
   pdf.fill_color 'ff0000'
-  pdf.text_box "#{TypeOfCertificate.find(@order.type_of_certificate_id).title}", size: 14, at: [-36,470], align: :center, width: 620
-  pdf.text_box "#{TypeOfLegalEntity.find(@order.type_of_legal_entity_id).full_title}", size: 14, at: [-36,450], align: :center, width: 620
+  pdf.text_box "#{@order.type_of_certificate.title}", size: 14, at: [-36,470], align: :center, width: 620
+  pdf.text_box "#{@order.type_of_legal_entity.full_title}", size: 14, at: [-36,450], align: :center, width: 620
   pdf.text_box "Наименование компании: #{@order.company}", size: 14, at: [-36,430], align: :center, width: 620
 
   f = 0
