@@ -26,8 +26,8 @@ class OrdersControllerTest < ActionController::TestCase
     assert_redirected_to home_path
   end
 
-  test "should show order when logged in client, manager or admin" do
-    login_as :client
+  test "should show order when logged in manager or admin" do
+    login_as :manager
     get :show, id: @order
     assert_response :success
   end
