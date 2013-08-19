@@ -30,20 +30,20 @@ class ApplicationController < ActionController::Base
         redirect_to login_url, notice: "Please log in"
       else
         case params[:controller]
-        when 'admin'
+        when :admin
           redirect_to login_url, notice: "You need admin's permission" if not current_user.admin?
-        when 'manager'
+        when :manager
           redirect_to login_url, notice: "You need admin's or manager's permission" if not (current_user.admin? or current_user.manager?)
-        when 'orders'
+        when :orders
           case params[:action]
-          when 'index', 'show', 'edit', 'update'
+          when :index, :show, :edit, :update
             redirect_to login_url, notice: "You need admin's or manager's permission" if not (current_user.admin? or current_user.manager?)
-          when 'destroy'
+          when :destroy
             redirect_to login_url, notice: "You need admin's permission" if not current_user.admin?
           end
-        when 'users'
+        when :users
           case params[:action]
-          when 'index', 'show', 'edit', 'update', 'destroy'
+          when :index, :show, :edit, :update, :destroy
             redirect_to login_url, notice: "You need admin's permission" if not current_user.admin?
           end
         end
