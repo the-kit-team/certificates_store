@@ -36,11 +36,15 @@ class ApplicationController < ActionController::Base
             case params[:action]
               when 'new', 'create'
                 # permit
+              else
+                redirect_to home_url
             end
           when 'users'
             case params[:action]
               when 'new', 'create'
                 # permit
+              else
+                redirect_to home_url
             end
           when 'my_orders'
             # permit
@@ -57,6 +61,8 @@ class ApplicationController < ActionController::Base
             case params[:action]
               when 'new', 'create'
                 # permit
+              else
+                redirect_to home_url
           end
           when 'manager'
             # permit
@@ -85,11 +91,15 @@ class ApplicationController < ActionController::Base
             case params[:action]
               when :new, :create
                 # permit
+              else
+                redirect_to home_url
             end
           when 'users'
             case params[:action]
               when :new, :create
                 # permit
+              else
+                redirect_to home_url
             end
           else
             redirect_to login_url, notice: "Please log in"
