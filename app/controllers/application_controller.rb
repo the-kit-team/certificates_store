@@ -30,8 +30,4 @@ class ApplicationController < ActionController::Base
         redirect_to login_url, notice: "Please log in" if not logout_workplace
       end
     end
-    
-    def current_ability
-      @current_ability ||= Ability.new(current_user)
-    end
 end
