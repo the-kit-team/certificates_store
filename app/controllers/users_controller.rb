@@ -25,7 +25,7 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
-    @user.permission_id = 3
+    @user.permission_id = 3 # client
 
     respond_to do |format|
       if @user.save
