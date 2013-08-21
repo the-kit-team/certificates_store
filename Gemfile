@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+# For permissions
+gem 'cancan'
+
 # Prawn gem for working with PDF files
 gem 'prawn'
 
