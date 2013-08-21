@@ -1,4 +1,6 @@
 class ManagerController < ApplicationController
+  before_action { redirect_to home_url if not (current_user.manager? or current_user.admin?) }
+  
   # GET /manager
   # GET /manager?status=1
   def index
