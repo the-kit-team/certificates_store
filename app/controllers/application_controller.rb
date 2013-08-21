@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
     
     def authorize
       if current_user.nil?
-        redirect_to login_url, notice: "Please log in" if not logout_workplace
+        redirect_to login_url, notice: "Please log in"
       end
     end
 end
