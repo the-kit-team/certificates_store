@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   skip_before_action :authorize, only: [:new, :create]
   before_action :redirect_to_home_if_not_admin, only: [:destroy]
-  before_action :redirect_to_home_if_not_manager, only: [:show, :edit, :update]
+  before_action :redirect_to_home_if_not_manager_or_admin, only: [:show, :edit, :update]
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   # GET /orders
@@ -78,10 +78,10 @@ class OrdersController < ApplicationController
     end
     
     def redirect_to_home_if_not_admin
-      redirect_to home_url if not current_user.admin?
+      redirect_to home_url unless current_user.admin?
     end
     
-    def redirect_to_home_if_not_manager
-      redirect_to home_url if not current_user.manager?
+    def redirect_to_home_if_not_manager_or_admin
+      redirect_to home_url unless current_user.manager? or current_user.admin?
     end
 end
