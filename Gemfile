@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+# for heroku, postgresql database
+gem 'pg', group: :production
+
 # Prawn gem for working with PDF files
 gem 'prawn'
 
