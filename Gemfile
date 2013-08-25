@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+# for heroku loggoning
+gem 'rails_12factor', group: :production
+
 # for heroku, postgresql database
 gem 'pg', group: :production
 
