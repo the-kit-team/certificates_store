@@ -13,8 +13,7 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'rails', '4.0.0'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', group: :development
-gem 'sqlite3', group: :test
+gem 'sqlite3', group: [:development, :test]
 
 # for heroku, postgresql database
 gem 'pg', group: :production
@@ -56,4 +55,4 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-gem 'pry-rails', group: :development
+gem 'pry-rails', group: [:development, :test]
