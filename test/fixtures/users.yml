@@ -21,6 +21,6 @@ manager:
   permission: manager
 
 client:
-  email: client
+  email: client@client.com
   password_digest: <%= BCrypt::Password.create('client') %>
   permission: client
