@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   skip_before_action :authorize, only: [:new, :create]
   before_action :redirect_to_home_if_not_admin, only: [:show, :edit, :update, :destroy]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  after_action :send_welcome_mail, only: [:create]
 
   # GET /users
   # GET /users.json
@@ -77,5 +78,9 @@ class UsersController < ApplicationController
     
     def redirect_to_home_if_not_admin
       redirect_to home_url if not current_user.admin?
+    end
+    
+    def send_welcome_mail
+      MainMailer.welcome_email(@user).deliver if @user.save
     end
 end
