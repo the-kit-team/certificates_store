@@ -103,6 +103,8 @@ class OrdersController < ApplicationController
     
     def create_order_user
       rand_password = ('a'..'z').to_a.shuffle.first(8).join
-      User.create email: @order.email, password: rand_password, password_confirmation: rand_password
+      user = User.new email: @order.email, password: rand_password, password_confirmation: rand_password
+      user.permission = Permission.find_by(title: "client")
+      MainMailer.welcome(user).deliver if user.save
     end
 end
