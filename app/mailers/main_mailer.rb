@@ -10,7 +10,8 @@ class MainMailer < ActionMailer::Base
   def invoice(order)
     @user = order.creator_name
     @email = order.email
-    @url  = 'http://example.com/my_orders'
-    mail to: @email, subject: 'Thank you for chose our resource'
+    @order_number = order.id
+    @url  = 'http://licenziyaplus.ru/my_orders'
+    mail to: @email, subject: "Спасибо за заказ ##{@order_number}"
   end
 end
