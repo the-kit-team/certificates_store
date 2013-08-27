@@ -8,6 +8,7 @@ class OrdersController < ApplicationController
   # GET /orders.json
   def index
     @orders = Order.all
+    fresh_when last_modified: @orders.maximum(:updated_at), etag: 'all'
   end
 
   # GET /orders/1

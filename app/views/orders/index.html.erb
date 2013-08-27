@@ -27,40 +27,36 @@
       <th><%= t :type_of_certificate,    scope: 'activerecord.attributes.order' %></th>
       <th></th>
     </tr>
-    <% cache ["orders", Order.latest] do %>
-      <% @orders.each do |order| %>
-        <% cache ['entry', order] do %>
-          <tr>
-            <td><%= order.id %></td>
-            <td><%= l order.created_at %></td>
-            <td><%= l order.updated_at %></td>
-            <td><%= "#{order.type_of_legal_entity.title} #{order.company}" %></td>
-            <td><%= get_lastname_and_abbreviation order.creator_name  %></td>
-            <td><%= order.phone %></td>
-            <td><%= order.list_of_works_categories.map(&:title).join("/") %></td>
-            <td><%= order.auditors_names %></td>
-            <td><%= order.bank_person %></td>
-            <td><%= order.bik %></td>
-            <td><%= order.correspondent_account %></td>
-            <td><%= order.current_account %></td>
-            <td><%= order.bank %></td>
-            <td><%= order.ogrn %></td>
-            <td><%= order.kpp %></td>
-            <td><%= order.inn %></td>
-            <td><%= order.email %></td>
-            <td><%= order.fax %></td>
-            <td><%= order.address_on_english %></td>
-            <td><%= order.actual_address %></td>
-            <td><%= order.registered_address %></td>
-            <td><%= order.type_of_certificate.title %></td>
-            <td id="actions">
-              <%= link_to t('show'), order %> |
-              <%= link_to t('edit'), edit_order_path(order) %> |
-              <%= link_to t('destroy'), order, method: :delete, data: { confirm: t('are_you_sure_to_destroy')+'?' } %>
-            </td>
-          </tr>
-        <% end %>
-      <% end %>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.id %></td>
+        <td><%= l order.created_at %></td>
+        <td><%= l order.updated_at %></td>
+        <td><%= "#{order.type_of_legal_entity.title} #{order.company}" %></td>
+        <td><%= get_lastname_and_abbreviation order.creator_name  %></td>
+        <td><%= order.phone %></td>
+        <td><%= order.list_of_works_categories.map(&:title).join("/") %></td>
+        <td><%= order.auditors_names %></td>
+        <td><%= order.bank_person %></td>
+        <td><%= order.bik %></td>
+        <td><%= order.correspondent_account %></td>
+        <td><%= order.current_account %></td>
+        <td><%= order.bank %></td>
+        <td><%= order.ogrn %></td>
+        <td><%= order.kpp %></td>
+        <td><%= order.inn %></td>
+        <td><%= order.email %></td>
+        <td><%= order.fax %></td>
+        <td><%= order.address_on_english %></td>
+        <td><%= order.actual_address %></td>
+        <td><%= order.registered_address %></td>
+        <td><%= order.type_of_certificate.title %></td>
+        <td id="actions">
+          <%= link_to t('show'), order %> |
+          <%= link_to t('edit'), edit_order_path(order) %> |
+          <%= link_to t('destroy'), order, method: :delete, data: { confirm: t('are_you_sure_to_destroy')+'?' } %>
+        </td>
+      </tr>
     <% end %>
   </tbody>
 </table>
