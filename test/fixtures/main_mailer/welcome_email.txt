@@ -1,9 +1,12 @@
-Welcome to example.com, client@client.com
+Добро пожаловать на сайт licenziyaplus.ru</h1>
 ===============================================
- 
-You have successfully signed up to example.com,
-your username is: client@client.com.
- 
-To login to the site, just follow this link: http://example.com/login.
- 
-Thanks for joining and have a great day!
+
+Для вас создана станичка Мои заказы, для отслеживания вашего заказа.
+
+Ваш логин(электронный адрес): client@client.com.<br/>
+Ваш пароль: .
+
+Для того что бы перейти на страничку Мои заказы, пройдите по этой ссылке: http://licenziyaplus.ru/my_orders.
+
+Спасибо что выбрали наш сайт.
+С уважением Дирекция компании Лицензия+.
