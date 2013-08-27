@@ -41,3 +41,24 @@ two:
   bik: MyString
   bank_person: MyString
   auditors_names: MyString
+
+kennys_order:
+  type_of_certificate: two
+  type_of_legal_entity: two
+  company: Kenny's pub
+  creator_name: kenny
+  registered_address: MyString
+  actual_address: MyString
+  address_on_english: MyString
+  phone: MyString
+  fax: MyString
+  email: kenny@gmail.com
+  inn: MyString
+  kpp: MyString
+  ogrn: MyString
+  bank: MyString
+  current_account: MyString
+  correspondent_account: MyString
+  bik: MyString
+  bank_person: MyString
+  auditors_names: MyString
