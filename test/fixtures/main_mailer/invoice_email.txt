@@ -1,9 +1,12 @@
-Welcome to example.com, Kenny
+Здравствуйте, Kenny.
 ===============================================
- 
-You have successfully signed up to example.com,
-your username is: kenny@gmail.com.
- 
-To login to the site, just follow this link: http://example.com/my_orders.
- 
-Thanks for joining and have a great day!
+
+Спасибо за заказ.
+Ваш заказ принят в обработку.
+
+Что бы просмотреть статус заказа перейдите по ссылке: http://licenziyaplus.ru/my_orders.
+
+Для уточнения информации по заказу сообщите менеджеру его номер: 17.
+
+Спасибо что выбрали наш сайт.
+С уважением Дирекция компании Лицензия+.
