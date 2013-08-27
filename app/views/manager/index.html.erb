@@ -25,7 +25,7 @@
       <th id="phone">       <%= t :phone,        scope: 'activerecord.attributes.order' %></th>
       <th id="actions"></th>
     </tr>
-    <% cache ["manager_#{@cache_key}", @order_latest] do %>
+    <% cache @orders_cache do %>
       <% @orders.each do |order| %>
         <% cache ['entry', order] do %>
           <tr id=<%= "status#{order.status_id}" %>>

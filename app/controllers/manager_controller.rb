@@ -6,12 +6,13 @@ class ManagerController < ApplicationController
   def index
     if params[:status_filter]
       @orders = Order.where(status_id: params[:status_filter]).reverse
-      @cache_key = "#{params[:status_filter]}"
+      @orders = Order.where(status_id: params[:status_filter])
+      @orders_cache = cache_key(params[:status_filter], @orders)
     else
       @orders = Order.all.reverse
-      @cache_key = 'all'
+      @orders = Order.all
+      @orders_cache = cache_key('all', @orders)
     end
-    @order_latest = @orders.maximum(:updated_at)
   end
   
   # GET /find?word=searhing_word
@@ -27,6 +28,10 @@ class ManagerController < ApplicationController
               @orders.select { |e| 
                 TypeOfLegalEntity.find(e.type_of_legal_entity_id).title =~ /#{params[:word].mb_chars.upcase.to_s}/ # mb_char - for russian language
               }
+    type = 'Find'
+    count = @orders.count
+    max_updated_at = @orders.max_by(&:updated_at)
+    @orders_cache = "orders/#{type}-#{count}-#{max_updated_at}"
     render template: "manager/index"
   end
   
@@ -34,5 +39,11 @@ class ManagerController < ApplicationController
   
     def manager_params
       params.require(:manager).permit(:word)
+    end
+    
+    def cache_key(filter, orders)
+      count          = orders.count
+      max_updated_at = orders.maximum(:updated_at).try(:utc).try(:to_s, :number)
+      "orders/#{filter}-#{count}-#{max_updated_at}"
     end
 end
