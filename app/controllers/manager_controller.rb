@@ -17,7 +17,9 @@ class ManagerController < ApplicationController
   # GET /find?word=searhing_word
   def find
     @orders = Order.all.reverse
-    @orders = @orders.select { |e| e.company      =~ /#{params[:word]}/ } |
+    @orders = Order.all
+    @orders = @orders.select { |e| e.id           == params[:word].to_i } |
+              @orders.select { |e| e.company      =~ /#{params[:word]}/ } |
               @orders.select { |e| e.phone        =~ /#{params[:word]}/ } |
               @orders.select { |e| e.fax          =~ /#{params[:word]}/ } |
               @orders.select { |e| e.creator_name =~ /#{params[:word]}/ } |
