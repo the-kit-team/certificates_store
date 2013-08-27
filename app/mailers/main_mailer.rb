@@ -8,7 +8,6 @@ class MainMailer < ActionMailer::Base
   end
   
   def invoice(order)
-    puts order
     @user = order.creator_name
     @email = order.email
     @url  = 'http://example.com/my_orders'
