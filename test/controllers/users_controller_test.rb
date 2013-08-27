@@ -65,8 +65,8 @@ class UsersControllerTest < ActionController::TestCase
     
     assert_equal ['notifications@example.com'], welcome_email.from
     assert_equal user.email, welcome_email.to[0]
-    assert_equal 'Welcome to My Awesome Site', welcome_email.subject
-    assert_match /Welcome to example.com, unique_email/, welcome_email.text_part.body.to_s
-    assert_match /<h1>Welcome to example.com, unique_email<\/h1>/, welcome_email.html_part.body.to_s
+    assert_equal 'Добро пожаловать на сайт licenziyaplus.ru', welcome_email.subject
+    assert_match /Добро пожаловать на сайт licenziyaplus.ru/, welcome_email.text_part.body.to_s
+    assert_match /<h1>Добро пожаловать на сайт licenziyaplus.ru<\/h1>/, welcome_email.html_part.body.to_s
   end
 end
