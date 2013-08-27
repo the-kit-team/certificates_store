@@ -44,7 +44,7 @@ class ManagerController < ApplicationController
     
     def cache_key(filter, orders)
       count          = orders.count
-      max_updated_at = orders.maximum(:updated_at).try(:utc).try(:to_s, :number)
+      max_updated_at = orders.maximum(:updated_at).to_s
       "orders/#{filter}-#{count}-#{max_updated_at}"
     end
 end
