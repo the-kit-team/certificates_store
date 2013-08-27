@@ -4,6 +4,7 @@ class OrdersController < ApplicationController
   before_action :redirect_to_home_if_not_manager_or_admin, only: [:show, :edit, :update]
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   after_action :send_invoice_email, only: [:create]
+  after_action :create_order_user, only: [:create]
 
   # GET /orders
   # GET /orders.json
@@ -98,5 +99,10 @@ class OrdersController < ApplicationController
     
     def send_invoice_email
       MainMailer.invoice(@order).deliver if @order.save
+    end
+    
+    def create_order_user
+      rand_password = ('a'..'z').to_a.shuffle.first(8).join
+      User.create email: @order.email, password: rand_password, password_confirmation: rand_password
     end
 end
