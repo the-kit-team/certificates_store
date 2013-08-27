@@ -17,7 +17,7 @@ class OrdersController < ApplicationController
   # GET /orders/1.pdf
   def show
     #respond_with @order if stale? @order # another method of caching
-    fresh_when last_modified: @order.updated_at.to_s, etag: @order
+    fresh_when @order
   end
 
   # GET /orders/new
