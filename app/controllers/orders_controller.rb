@@ -8,8 +8,8 @@ class OrdersController < ApplicationController
   # GET /orders.json
   def index
     @orders = Order.all
-    fresh_when last_modified: @orders.maximum(:updated_at), etag: 'all'
     @cache_key_orders = cache_key('all', @orders)
+    fresh_when @cache_key_orders, public: true
   end
 
   # GET /orders/1
