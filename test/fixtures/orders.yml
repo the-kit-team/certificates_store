@@ -46,7 +46,7 @@ kennys_order:
   type_of_certificate: two
   type_of_legal_entity: two
   company: Kenny's pub
-  creator_name: kenny
+  creator_name: Kenny
   registered_address: MyString
   actual_address: MyString
   address_on_english: MyString
