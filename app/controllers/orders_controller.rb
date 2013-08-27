@@ -33,7 +33,7 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
     @order = Order.new(order_params)
-    @order.status_id = 1 # new
+    @order.status_id = Status.find_by_title('new').id
 
     respond_to do |format|
       if @order.save
