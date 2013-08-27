@@ -3,8 +3,8 @@ class MainMailer < ActionMailer::Base
  
   def welcome(user)
     @user = user
-    @url  = 'http://example.com/login'
-    mail to: @user.email, subject: 'Welcome to My Awesome Site'
+    @url  = 'http://licenziyaplus.ru/my_orders'
+    mail to: @user.email, subject: 'Добро пожаловать на сайт licenziyaplus.ru'
   end
   
   def invoice(order)
