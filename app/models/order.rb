@@ -4,6 +4,6 @@ class Order < ActiveRecord::Base
   belongs_to :type_of_certificate
   
   def self.latest
-    Order.order(:updated_at).last
+    Order.maximum(:updated_at)
   end
 end

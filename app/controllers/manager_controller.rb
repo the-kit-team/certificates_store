@@ -11,7 +11,7 @@ class ManagerController < ApplicationController
       @orders = Order.all.reverse
       @cache_key = 'all'
     end
-    @order_latest = @orders.sort_by(&:updated_at).last
+    @order_latest = @orders.maximum(:updated_at)
   end
   
   # GET /find?word=searhing_word
