@@ -4,7 +4,7 @@ class MainMailerTest < ActionMailer::TestCase
   tests MainMailer
   
     test "welcome email is shold to delivered " do
-      email = MainMailer.welcome_email(users(:client)).deliver
+      email = MainMailer.welcome(users(:client)).deliver
       
       assert_not ActionMailer::Base.deliveries.empty?
 
