@@ -27,7 +27,7 @@
     </tr>
     <% cache @orders_cache do %>
       <% @orders.each do |order| %>
-        <% cache ['entry', order] do %>
+        <% cache order do %>
           <tr id=<%= "status#{order.status_id}" %>>
             <td id="id"><%= order.id %></td>
             <td><%= l order.created_at %></td>
