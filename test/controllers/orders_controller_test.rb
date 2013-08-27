@@ -53,4 +53,16 @@ class OrdersControllerTest < ActionController::TestCase
 
     assert_redirected_to orders_url
   end
+  
+  test "should send invoice email after creating new order" do
+    post :create, order: { actual_address: @order.actual_address, address_on_english: @order.address_on_english, auditors_names: @order.auditors_names, bank: @order.bank, bank_person: @order.bank_person, bik: @order.bik, company: @order.company, correspondent_account: @order.correspondent_account, creator_name: @order.creator_name, current_account: @order.current_account, email: @order.email, fax: @order.fax, inn: @order.inn, kpp: @order.kpp, ogrn: @order.ogrn, phone: @order.phone, registered_address: @order.registered_address }
+
+    welcome_email = ActionMailer::Base.deliveries.last
+    
+    assert_equal ['notifications@example.com'], welcome_email.from
+    assert_equal @order.email, welcome_email.to[0]
+    assert_equal 'Thank you for chose our resource', welcome_email.subject
+    assert_match /Welcome to example.com, #{@order.creator_name}/, welcome_email.text_part.body.to_s
+    assert_match /<h1>Welcome to example.com, #{@order.creator_name}<\/h1>/, welcome_email.html_part.body.to_s
+  end
 end
