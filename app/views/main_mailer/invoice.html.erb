@@ -4,14 +4,18 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Welcome to example.com, <%= @user %></h1>
+    <h1>Здравствуйте, <%= @user %>.</h1>
     <p>
-      You have successfully signed up to example.com,
-      your username is: <%= @email %>.<br/>
+      Спасибо за заказ.<br/>
+      Ваш заказ принят в обработку.<br/>
     </p>
     <p>
-      To login to the site, just follow this link: <%= @url %>.
+      Что бы просмотреть статус заказа перейдите по ссылке: <%= @url %>.
     </p>
-    <p>Thanks for joining and have a great day!</p>
+    <p>
+      Для уточнения информации по заказу сообщите менеджеру его номер: <%= @order_number %>.
+    </p>
+    <p>Спасибо что выбрали наш сайт.</p>
+    <p>С уважением Дирекция компании Лицензия+.</p>
   </body>
 </html>
