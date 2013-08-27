@@ -22,7 +22,7 @@ class MainMailerTest < ActionMailer::TestCase
 
       assert_equal ['notifications@example.com'], email.from
       assert_equal [orders(:kennys_order).email], email.to
-      assert_equal 'Thank you for chose our resource', email.subject
+      assert_equal "Спасибо за заказ ##{orders(:kennys_order).id}", email.subject
       assert_equal read_fixture('invoice_email.txt').join, email.text_part.body.to_s
       assert_equal read_fixture('invoice_email.html').join, email.html_part.body.to_s
     end
