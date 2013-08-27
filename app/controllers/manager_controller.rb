@@ -10,6 +10,7 @@ class ManagerController < ApplicationController
     else
       @orders = Order.all
       @orders_cache = cache_key('all', @orders)
+      fresh_when last_modified: @orders.maximum(:updated_at), etag: 'all'
     end
     @orders = @orders.reverse
   end
