@@ -10,7 +10,7 @@ class MainMailerTest < ActionMailer::TestCase
 
       assert_equal ['notifications@example.com'], email.from
       assert_equal [users(:client).email], email.to
-      assert_equal 'Welcome to My Awesome Site', email.subject
+      assert_equal 'Добро пожаловать на сайт licenziyaplus.ru', email.subject
       assert_equal read_fixture('welcome_email.txt').join, email.text_part.body.to_s
       assert_equal read_fixture('welcome_email.html').join, email.html_part.body.to_s
     end
