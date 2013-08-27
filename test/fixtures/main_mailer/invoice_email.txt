@@ -1,0 +1,9 @@
+Welcome to example.com, Kenny
+===============================================
+ 
+You have successfully signed up to example.com,
+your username is: kenny@gmail.com.
+ 
+To login to the site, just follow this link: http://example.com/my_orders.
+ 
+Thanks for joining and have a great day!
