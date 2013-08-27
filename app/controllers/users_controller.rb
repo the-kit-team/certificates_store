@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
+    fresh_when last_modified: @users.maximum(:updated_at), etag: 'all'
   end
 
   # GET /users/1
