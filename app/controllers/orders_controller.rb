@@ -9,6 +9,7 @@ class OrdersController < ApplicationController
   def index
     @orders = Order.all
     fresh_when last_modified: @orders.maximum(:updated_at), etag: 'all'
+    @cache_key_orders = cache_key('all', @orders)
   end
 
   # GET /orders/1
@@ -86,5 +87,11 @@ class OrdersController < ApplicationController
     
     def redirect_to_home_if_not_manager_or_admin
       redirect_to home_url unless current_user.manager? or current_user.admin?
+    end
+
+    def cache_key(filter, orders)
+      count          = orders.count
+      max_updated_at = orders.maximum(:updated_at).try(:utc).try(:to_s, :number)
+      "orders/#{filter}-#{count}-#{max_updated_at}"
     end
 end
