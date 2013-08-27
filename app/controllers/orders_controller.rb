@@ -14,6 +14,7 @@ class OrdersController < ApplicationController
   # GET /orders/1.json
   # GET /orders/1.pdf
   def show
+    fresh_when last_modified: @order.updated_at.utc, etag: @order
   end
 
   # GET /orders/new
