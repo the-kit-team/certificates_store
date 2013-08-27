@@ -1,6 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
+  id: 1
   type_of_certificate: one
   type_of_legal_entity: one
   company: MyString
@@ -43,6 +44,7 @@ two:
   auditors_names: MyString
 
 kennys_order:
+  id: 17
   type_of_certificate: two
   type_of_legal_entity: two
   company: Kenny's pub
