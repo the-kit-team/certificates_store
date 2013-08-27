@@ -7,6 +7,7 @@ class ManagerController < ApplicationController
     if params[:status_filter]
       @orders = Order.where(status_id: params[:status_filter])
       @orders_cache = cache_key(params[:status_filter], @orders)
+      fresh_when last_modified: @orders.maximum(:updated_at), etag: params[:status_filter]
     else
       @orders = Order.all
       @orders_cache = cache_key('all', @orders)
