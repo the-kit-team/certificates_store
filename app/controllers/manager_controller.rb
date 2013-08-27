@@ -5,19 +5,17 @@ class ManagerController < ApplicationController
   # GET /manager?status=1
   def index
     if params[:status_filter]
-      @orders = Order.where(status_id: params[:status_filter]).reverse
       @orders = Order.where(status_id: params[:status_filter])
       @orders_cache = cache_key(params[:status_filter], @orders)
     else
-      @orders = Order.all.reverse
       @orders = Order.all
       @orders_cache = cache_key('all', @orders)
     end
+    @orders = @orders.reverse
   end
   
   # GET /find?word=searhing_word
   def find
-    @orders = Order.all.reverse
     @orders = Order.all
     @orders = @orders.select { |e| e.id           == params[:word].to_i } |
               @orders.select { |e| e.company      =~ /#{params[:word]}/ } |
@@ -32,6 +30,7 @@ class ManagerController < ApplicationController
     count = @orders.count
     max_updated_at = @orders.max_by(&:updated_at)
     @orders_cache = "orders/#{type}-#{count}-#{max_updated_at}"
+    @orders = @orders.reverse
     render template: "manager/index"
   end
   
