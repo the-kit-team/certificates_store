@@ -3,6 +3,7 @@ class OrdersController < ApplicationController
   before_action :redirect_to_home_if_not_admin, only: [:destroy]
   before_action :redirect_to_home_if_not_manager_or_admin, only: [:show, :edit, :update]
   before_action :set_order, only: [:show, :edit, :update, :destroy]
+  after_action :send_invoice_email, only: [:create]
 
   # GET /orders
   # GET /orders.json
@@ -93,5 +94,9 @@ class OrdersController < ApplicationController
       count          = orders.count
       max_updated_at = orders.maximum(:updated_at).try(:utc).try(:to_s, :number)
       "orders/#{filter}-#{count}-#{max_updated_at}"
+    end
+    
+    def send_invoice_email
+      MainMailer.invoice(@order).deliver if @order.save
     end
 end
