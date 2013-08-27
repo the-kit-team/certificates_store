@@ -26,10 +26,10 @@ class ManagerController < ApplicationController
               @orders.select { |e| 
                 TypeOfLegalEntity.find(e.type_of_legal_entity_id).title =~ /#{params[:word].mb_chars.upcase.to_s}/ # mb_char - for russian language
               }
-    type = 'Find'
+    filter_word = "find-#{params[:word]}"
     count = @orders.count
     max_updated_at = @orders.max_by(&:updated_at)
-    @orders_cache = "orders/#{type}-#{count}-#{max_updated_at}"
+    @orders_cache = "orders/#{filter_word}-#{count}-#{max_updated_at}"
     @orders = @orders.reverse
     render template: "manager/index"
   end
