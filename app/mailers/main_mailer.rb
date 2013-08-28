@@ -1,6 +1,6 @@
 class MainMailer < ActionMailer::Base
   include MailHelper
-  default from: 'notifications@example.com'
+  default from: 'support@licenziyaplus.ru'
  
   def welcome(user)
     @user = user
