@@ -5,6 +5,7 @@ class Order < ActiveRecord::Base
   belongs_to :status
   
   before_validation on: :create do
+    self.email = email.downcase if attribute_present?("email")
     self.status = Status.find_by(title: "New")
   end
   
