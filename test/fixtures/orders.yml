@@ -11,7 +11,7 @@ one:
   address_on_english: MyString
   phone: MyString
   fax: MyString
-  email: MyString
+  email: client@client.com
   inn: MyString
   kpp: MyString
   ogrn: MyString
@@ -21,8 +21,10 @@ one:
   bik: MyString
   bank_person: MyString
   auditors_names: MyString
+  list_of_works_categories: one, two
 
 two:
+  id: 2
   type_of_certificate: two
   type_of_legal_entity: two
   company: MyString
@@ -42,6 +44,7 @@ two:
   bik: MyString
   bank_person: MyString
   auditors_names: MyString
+  list_of_works_categories: one, two
 
 kennys_order:
   id: 17
@@ -64,3 +67,4 @@ kennys_order:
   bik: MyString
   bank_person: MyString
   auditors_names: MyString
+  list_of_works_categories: one, two
