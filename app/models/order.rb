@@ -9,6 +9,9 @@ class Order < ActiveRecord::Base
     self.status = Status.find_by(title: "New")
   end
   
+  validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/, on: :create
+  validates_presence_of :email
+  
   def self.latest
     Order.maximum(:updated_at)
   end
