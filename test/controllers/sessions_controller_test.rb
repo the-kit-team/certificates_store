@@ -11,7 +11,6 @@ class SessionsControllerTest < ActionController::TestCase
     anton = users(:one)
     post :create, email: anton.email, password: 'password'
 
-    assert_response :success
     assert_equal anton.id, session[:user_id]
     assert_redirected_to home_url
   end
