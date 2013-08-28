@@ -6,8 +6,10 @@ class User < ActiveRecord::Base
     self.email = email.downcase if attribute_present?("email")
     self.permission = Permission.find_by(title: "client")
   end
-
-  validates :email, presence: true, uniqueness: true
+  
+  validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/, on: :create
+  validates_presence_of :email
+  validates_uniqueness_of :email
   
   def admin?
     permission.title == 'admin'
