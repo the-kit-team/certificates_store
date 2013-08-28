@@ -1,8 +1,13 @@
 class User < ActiveRecord::Base
   belongs_to :permission
   has_secure_password
-  validates :email, presence: true, uniqueness: true
 
+  before_validation on: :create do
+    self.email = email.downcase if attribute_present?("email")
+  end
+
+  validates :email, presence: true, uniqueness: true
+  
   def admin?
     permission.title == 'admin'
   end
