@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
 
   before_validation on: :create do
     self.email = email.downcase if attribute_present?("email")
+    self.permission = Permission.find_by(title: "client")
   end
 
   validates :email, presence: true, uniqueness: true
