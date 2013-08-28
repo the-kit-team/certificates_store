@@ -60,6 +60,9 @@ class UsersControllerTest < ActionController::TestCase
   test "should send welcome email after creating new user" do
     post :create, user: { email: 'client@client.com', password: 'qwerty', password_confirmation: 'qwerty' }
 
+
+    assert_not ActionMailer::Base.deliveries.empty?
+    
     welcome_email = ActionMailer::Base.deliveries.last
     user = assigns(:user)
     
