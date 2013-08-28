@@ -4,6 +4,10 @@ class Order < ActiveRecord::Base
   belongs_to :type_of_certificate
   belongs_to :status
   
+  before_validation on: :create do
+    self.status = Status.find_by(title: "New")
+  end
+  
   def self.latest
     Order.maximum(:updated_at)
   end
