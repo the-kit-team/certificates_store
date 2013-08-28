@@ -1,4 +1,5 @@
 class MainMailer < ActionMailer::Base
+  include MailHelper
   default from: 'notifications@example.com'
  
   def welcome(user)
@@ -11,6 +12,7 @@ class MainMailer < ActionMailer::Base
     @user = order.creator_name
     @email = order.email
     @order_number = order.id
+    attachments['invoice.pdf'] = generate_invoice_pdf(order)
     @url  = 'http://licenziyaplus.ru/my_orders'
     mail to: @email, subject: "Спасибо за заказ ##{@order_number}"
   end
