@@ -58,16 +58,16 @@ class UsersControllerTest < ActionController::TestCase
   end
   
   test "should send welcome email after creating new user" do
-    post :create, user: { email: 'client@client.com', password: 'qwerty', password_confirmation: 'qwerty' }
+    email = 'client@client.com'
 
+    post :create, user: { email: email, password: 'qwerty', password_confirmation: 'qwerty' }
 
     assert_not ActionMailer::Base.deliveries.empty?
     
     welcome_email = ActionMailer::Base.deliveries.last
-    user = assigns(:user)
     
     assert_equal ['support@licenziyaplus.ru'], welcome_email.from
-    assert_equal user.email, welcome_email.to[0]
+    assert_equal email, welcome_email.to[0]
     assert_equal 'Добро пожаловать на сайт licenziyaplus.ru', welcome_email.subject
     assert_match /Добро пожаловать на сайт licenziyaplus.ru/, welcome_email.text_part.body.to_s
     assert_match /<h1>Добро пожаловать на сайт licenziyaplus.ru<\/h1>/, welcome_email.html_part.body.to_s
