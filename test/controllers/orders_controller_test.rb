@@ -19,8 +19,10 @@ class OrdersControllerTest < ActionController::TestCase
   end
 
   test "should create order" do
+    puts "Order works"
+    puts @order.list_of_works_categories.map(&:id)
     assert_difference('Order.count') do
-      post :create, order: { actual_address: @order.actual_address, address_on_english: @order.address_on_english, auditors_names: @order.auditors_names, bank: @order.bank, bank_person: @order.bank_person, bik: @order.bik, company: @order.company, correspondent_account: @order.correspondent_account, creator_name: @order.creator_name, current_account: @order.current_account, email: @order.email, fax: @order.fax, inn: @order.inn, kpp: @order.kpp, ogrn: @order.ogrn, phone: @order.phone, registered_address: @order.registered_address }
+      post :create, order: { type_of_certificate_id: @order.type_of_certificate_id, type_of_legal_entity_id: @order.type_of_legal_entity_id, actual_address: @order.actual_address, address_on_english: @order.address_on_english, auditors_names: @order.auditors_names, bank: @order.bank, bank_person: @order.bank_person, bik: @order.bik, company: @order.company, correspondent_account: @order.correspondent_account, creator_name: @order.creator_name, current_account: @order.current_account, email: @order.email, fax: @order.fax, inn: @order.inn, kpp: @order.kpp, ogrn: @order.ogrn, phone: @order.phone, registered_address: @order.registered_address, list_of_works_category_ids: @order.list_of_works_category_ids }
     end
 
     assert_redirected_to home_path
@@ -55,8 +57,8 @@ class OrdersControllerTest < ActionController::TestCase
   end
   
   test "should send invoice email after creating new order" do
-    post :create, order: { actual_address: @order.actual_address, address_on_english: @order.address_on_english, auditors_names: @order.auditors_names, bank: @order.bank, bank_person: @order.bank_person, bik: @order.bik, company: @order.company, correspondent_account: @order.correspondent_account, creator_name: @order.creator_name, current_account: @order.current_account, email: @order.email, fax: @order.fax, inn: @order.inn, kpp: @order.kpp, ogrn: @order.ogrn, phone: @order.phone, registered_address: @order.registered_address }
-
+    post :create, order: { actual_address: @order.actual_address, address_on_english: @order.address_on_english, auditors_names: @order.auditors_names, bank: @order.bank, bank_person: @order.bank_person, bik: @order.bik, company: @order.company, correspondent_account: @order.correspondent_account, creator_name: @order.creator_name, current_account: @order.current_account, email: @order.email, fax: @order.fax, inn: @order.inn, kpp: @order.kpp, ogrn: @order.ogrn, phone: @order.phone, registered_address: @order.registered_address, list_of_works_categories: @order.list_of_works_categories }
+    
     welcome_email = ActionMailer::Base.deliveries.last
     order = assigns(:order)
     
