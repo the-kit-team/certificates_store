@@ -60,7 +60,7 @@ class OrdersControllerTest < ActionController::TestCase
     welcome_email = ActionMailer::Base.deliveries.last
     order = assigns(:order)
     
-    assert_equal ['notifications@example.com'], welcome_email.from
+    assert_equal ['support@licenziyaplus.ru'], welcome_email.from
     assert_equal @order.email, welcome_email.to[0]
     assert_equal "Спасибо за заказ ##{order.id}", welcome_email.subject
     assert_match /Здравствуйте, #{order.creator_name}/, welcome_email.text_part.body.to_s

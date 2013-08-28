@@ -8,7 +8,7 @@ class MainMailerTest < ActionMailer::TestCase
       
       assert_not ActionMailer::Base.deliveries.empty?
 
-      assert_equal ['notifications@example.com'], email.from
+      assert_equal ['support@licenziyaplus.ru'], email.from
       assert_equal [users(:client).email], email.to
       assert_equal 'Добро пожаловать на сайт licenziyaplus.ru', email.subject
       assert_equal read_fixture('welcome_email.txt').join, email.text_part.body.to_s
@@ -20,7 +20,7 @@ class MainMailerTest < ActionMailer::TestCase
       
       assert_not ActionMailer::Base.deliveries.empty?
 
-      assert_equal ['notifications@example.com'], email.from
+      assert_equal ['support@licenziyaplus.ru'], email.from
       assert_equal [orders(:kennys_order).email], email.to
       assert_equal "Спасибо за заказ ##{orders(:kennys_order).id}", email.subject
       assert_equal read_fixture('invoice_email.txt').join, email.text_part.body.to_s

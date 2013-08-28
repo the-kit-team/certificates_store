@@ -63,7 +63,7 @@ class UsersControllerTest < ActionController::TestCase
     welcome_email = ActionMailer::Base.deliveries.last
     user = assigns(:user)
     
-    assert_equal ['notifications@example.com'], welcome_email.from
+    assert_equal ['support@licenziyaplus.ru'], welcome_email.from
     assert_equal user.email, welcome_email.to[0]
     assert_equal 'Добро пожаловать на сайт licenziyaplus.ru', welcome_email.subject
     assert_match /Добро пожаловать на сайт licenziyaplus.ru/, welcome_email.text_part.body.to_s
