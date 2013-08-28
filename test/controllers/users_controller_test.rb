@@ -57,8 +57,8 @@ class UsersControllerTest < ActionController::TestCase
     assert_redirected_to users_url
   end
   
-  test "should send welcome email after creating new user" do
-    email = 'unicue_client@client.com'
+  test "should send welcome after create new user" do
+    email = 'unique_client@client.com'
     assert_difference("MainMailer.deliveries.count") do
       assert_difference('User.count') do
         post :create, user: { email: email, password: 'qwerty', password_confirmation: 'qwerty' }
