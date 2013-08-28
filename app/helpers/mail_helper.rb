@@ -29,38 +29,38 @@ module MailHelper
           italic: "lib/fonts/verdanai.ttf",
           normal: "lib/fonts/verdana.ttf"
         })
-      font "Verdana"
+      font "Verdana", size: 14
       
-      text_box "Анкета", size: 18, at: [-36,740], align: :center, width: 620, font: :bold
-      text_box "Данная анкета необхадима для подтверждения правильности данных для сертификата.", size: 14, at: [-36,720], align: :center, width: 620
-      text_box "Тип необходимого сертификата: #{order.type_of_certificate.title}", size: 14, at: [0,680]
-      text_box "Тип юридического лица: #{order.type_of_legal_entity.full_title}", size: 14, at: [0,660]
-      text_box "Наименование компании: #{order.company}", size: 14, at: [0,640]
-      text_box "Телефон: #{order.phone}", size: 14, at: [0,620]
-      text_box "Факс: #{order.fax}", size: 14, at: [0,600]
-      text_box "Электронный адресс: #{order.email}", size: 14, at: [0,580]
-      text_box "Индиыидуальный налоговый номер: #{order.inn}", size: 14, at: [0,560]
-      text_box "Имя составителя: #{order.creator_name}", size: 14, at: [0,540]
-      text_box "Имена аудиторов: #{order.auditors_names}", size: 14, at: [0,520]
-      text_box "Представитель банка: #{order.bank_person}", size: 14, at: [0,500]
-      text_box "БИК: #{order.bik}", size: 14, at: [0,480]
-      text_box "Корреспонденский счёт: #{order.correspondent_account}", size: 14, at: [0,460]
-      text_box "Расчётный счёт: #{order.current_account}", size: 14, at: [0,440]
-      text_box "Наименование банка: #{order.bank}", size: 14, at: [0,420]
-      text_box "ОГРН: #{order.ogrn}", size: 14, at: [0,400]
-      text_box "КПП: #{order.kpp}", size: 14, at: [0,380]
-      text_box "Адресс на английском: #{order.address_on_english}", size: 14, at: [0,360]
-      text_box "Фактический адресс: #{order.actual_address}", size: 14, at: [0,340]
-      text_box "Юридический адресс: #{order.registered_address}", size: 14, at: [0,320]
+      text " "
+      text "Анкета", size: 18, align: :center, font: :bold
+      text "Данная анкета необхадима для подтверждения правильности данных для сертификата.", align: :center
+      text "Тип необходимого сертификата: #{order.type_of_certificate.title}"
+      text "Тип юридического лица: #{order.type_of_legal_entity.full_title}"
+      text "Наименование компании: #{order.company}"
+      text "Телефон: #{order.phone}"
+      text "Факс: #{order.fax}"
+      text "Электронный адресс: #{order.email}"
+      text "Индиыидуальный налоговый номер: #{order.inn}"
+      text "Имя составителя: #{order.creator_name}"
+      text "Имена аудиторов: #{order.auditors_names}"
+      text "Представитель банка: #{order.bank_person}"
+      text "БИК: #{order.bik}"
+      text "Корреспонденский счёт: #{order.correspondent_account}"
+      text "Расчётный счёт: #{order.current_account}"
+      text "Наименование банка: #{order.bank}"
+      text "ОГРН: #{order.ogrn}"
+      text "КПП: #{order.kpp}"
+      text "Адресс на английском: #{order.address_on_english}"
+      text "Фактический адресс: #{order.actual_address}"
+      text "Юридический адресс: #{order.registered_address}"
       
-      text_box "Перечень работ: ", size: 14, at: [0,300]
-      f = 0
+      text "Перечень работ: "
       order.list_of_works_categories.map(&:title).each do |category|
-        text_box "#{category}", size: 10, at: [0,280-f], width: 600
-        f += 18
+        text "#{category}", size: 10
       end
       
-      text_box "Дата: __________ Подпись: ____________ Печать: ___________", size: 14, at: [-36,250-f], align: :right, width: 600, font: :bold
+      text " "
+      text "Дата: __________ Подпись: ____________ Печать: ___________", align: :right, font: :bold
     end.render
   end
 end
