@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-# for heroku loggoning
+# For heroku logging
 gem 'rails_12factor', group: :production
 
 # Prawn gem for working with PDF files
