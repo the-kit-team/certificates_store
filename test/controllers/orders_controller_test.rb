@@ -26,7 +26,7 @@ class OrdersControllerTest < ActionController::TestCase
     assert_redirected_to home_path
   end
 
-  test "should show order when logged in manager or admin" do
+  test "should show order when logged in manager" do
     login_as :manager
     get :show, id: @order
     assert_response :success
@@ -54,7 +54,7 @@ class OrdersControllerTest < ActionController::TestCase
     assert_redirected_to orders_url
   end
   
-  test "should send invoice email after creating new order" do
+  test "should send invoice after create order" do
     assert_difference("MainMailer.deliveries.count") do
       assert_difference('Order.count') do
         post :create, order: { type_of_certificate_id: @order.type_of_certificate_id, type_of_legal_entity_id: @order.type_of_legal_entity_id, actual_address: @order.actual_address, address_on_english: @order.address_on_english, auditors_names: @order.auditors_names, bank: @order.bank, bank_person: @order.bank_person, bik: @order.bik, company: @order.company, correspondent_account: @order.correspondent_account, creator_name: @order.creator_name, current_account: @order.current_account, email: @order.email, fax: @order.fax, inn: @order.inn, kpp: @order.kpp, ogrn: @order.ogrn, phone: @order.phone, registered_address: @order.registered_address, list_of_works_category_ids: @order.list_of_works_category_ids }

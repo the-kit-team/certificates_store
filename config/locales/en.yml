@@ -25,7 +25,7 @@ en:
       default: '%d.%m.%Y %H:%m'
   layouts:
     application:
-      title: "Certificates"
+      title: Certificates
       сopyright: © 2013 Petrov Vladislav
   home:
     index:
